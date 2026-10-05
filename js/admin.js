@@ -214,7 +214,6 @@ function showLogin() {
 var TITLES = {
   dashboard: 'Visão geral',
   pedidos: 'Pedidos',
-  lasanhas: 'Pudins',
   pudins: 'Menu de Pudins',
   tamanhos: 'Tamanhos',
   adicionais: 'Adicionais',
@@ -375,29 +374,21 @@ function updateNavBadge(count) {
 
 /* LEGACY: substituído por GET /admin/products — mantido só como referência. */
 var MOCK_PUDINS = [
-  { id: 'bolonhesa-branca', name: 'Bolonhesa com Molho Branco', category: 'classicos', description: 'Pudim clássico com molho branco cremoso e carne moída temperada.', image: '', sizes: [{id:'g500',label:'500g · 2-3 porções',factor:1,price:62.24},{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:99.58},{id:'g1500',label:'1,5kg · 8 porções',factor:2.1,price:129.46}], active: true, badge: 'MAIS PEDIDO', position: 1, prepTime: '25-35 min' },
-  { id: 'frango-requeijao', name: 'Frango com Requeijão', category: 'classicos', description: 'Frango desfiado com requeijão cremoso e milho verde.', image: '', sizes: [{id:'g500',label:'500g · 2-3 porções',factor:1,price:58.90},{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:89.70}], active: true, badge: '', position: 2, prepTime: '25-35 min' },
-  { id: 'file-4queijos', name: 'Filé Mignon aos 4 Queijos', category: 'deluxe', description: 'Filé mignon grelhado com blend de quatro queijos artesanais.', image: '', sizes: [{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:118.84}], active: true, badge: 'PREMIUM', position: 3, prepTime: '30-40 min' },
-  { id: 'torta-chaja', name: 'Torta Chajá', category: 'doces', description: 'Torta doce com merengue, creme e frutas.', image: '', sizes: [{id:'g1000',label:'1kg · 6 porções',factor:1.6,price:89.90}], active: true, badge: '', position: 4, prepTime: '15 min' },
-  { id: 'pudim-tradicional', name: 'Pudim Tradicional da Casa', category: 'sobremesas', description: 'Pudim de leite condensado feito na fôrma, com calda caramelizada.', image: '', sizes: [{id:'un100',label:'100g · 1 porção',factor:0.3,price:12.90}], active: true, badge: '', position: 5, prepTime: '5 min' },
-  { id: 'mesa-farta', name: 'Mesa Farta', category: 'selecoes-fechadas', description: 'Seleção generosa para eventos: 3 sabores variados, borda de queijo e molho especial.', image: '', sizes: [{id:'g2500',label:'2,5kg · 12-15 porções',factor:3,price:356.90}], active: true, badge: 'EVENTOS', position: 6, prepTime: '45-60 min' },
-  { id: 'queijos-gorgonzola', name: 'Queijos com Gorgonzola', category: 'especiais', description: 'Blend de queijos especiais com gorgonzola importada.', image: '', sizes: [{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:108.90}], active: true, badge: '', position: 7, prepTime: '30-40 min' },
-  { id: 'vegetariana', name: 'Vegetariana com Legumes', category: 'lowcarb', description: 'Legumes grelhados frescos com molho pesto e queijo ricota.', image: '', sizes: [{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:89.90}], active: true, badge: 'LOW CARB', position: 8, prepTime: '25-35 min' },
-  { id: 'carne-panela', name: 'Carne de Panela ao Molho Madeira', category: 'classicos', description: 'Carne de panela desfiada ao molho madeira com queijo.', image: '', sizes: [{id:'g1000',label:'1kg · 5 porções',factor:1.6,price:94.90}], active: true, badge: '', position: 9, prepTime: '25-35 min' },
-  { id: 'selecao-generosa', name: 'Seleção Generosa', category: 'selecoes-fechadas', description: 'Mix premium de 4 sabores com borda recheada.', image: '', sizes: [{id:'g1500',label:'1,5kg · 8 porções',factor:2.1,price:242.73}], active: true, badge: '', position: 10, prepTime: '35-50 min' }
+  { id: 'pudim-tradicional', name: 'Pudim Tradicional da Casa', category: 'sobremesas', description: 'Pudim de leite condensado feito na fôrma, com calda caramelizada.', image: '', sizes: [{id:'u',label:'100g · 1 porção',factor:1,price:9.90}], active: true, badge: '', position: 1, prepTime: 'Feito no dia' },
+  { id: 'pudim-coco', name: 'Pudim de Coco', category: 'sobremesas', description: 'Cremoso com coco ralado e calda caramelizada.', image: '', sizes: [{id:'u',label:'130g · 1 porção',factor:1,price:13.90}], active: true, badge: '', position: 2, prepTime: 'Feito no dia' },
+  { id: 'torta-alfajor', name: 'Torta Alfajor na Fatia', category: 'sobremesas', description: 'Camadas de doce de leite com textura de alfajor.', image: '', sizes: [{id:'u',label:'Fatia · 1 porção',factor:1,price:24.90}], active: true, badge: '', position: 3, prepTime: 'Feito no dia' },
+  { id: 'kit-mini-festa', name: 'Kit Mini Festa', category: 'doces', description: '6 mini pudins + 2 fatias de torta para a festa.', image: '', sizes: [{id:'u',label:'Caixa com 8 un.',factor:1,price:89.90}], active: true, badge: '', position: 4, prepTime: 'Feito no dia' },
+  { id: 'coca-cola-350', name: 'Coca-Cola', category: 'bebidas', description: 'Lata 350ml gelada.', image: '', sizes: [{id:'u',label:'350ml · gelada',factor:1,price:6.90}], active: true, badge: '', position: 5, prepTime: 'Gelada' }
 ];
 
 var MOCK_SIZES = [
-  { id: 'g500', label: '500g', portions: '2-3 porções', basePrice: 58.90, active: true, position: 1 },
-  { id: 'g1000', label: '1kg', portions: '5 porções', basePrice: 89.70, active: true, position: 2 },
-  { id: 'g1500', label: '1,5kg', portions: '8 porções', basePrice: 129.46, active: true, position: 3 },
-  { id: 'g2500', label: '2,5kg', portions: '12-15 porções', basePrice: 242.73, active: true, position: 4 },
-  { id: 'un100', label: '100g (sobremesa)', portions: '1 porção', basePrice: 12.90, active: true, position: 5 }
+  { id: 'u', label: 'Unidade', portions: '1 porção', basePrice: 9.90, active: true, position: 1 },
+  { id: 'kit', label: 'Kit fechado', portions: 'Kit', basePrice: 59.90, active: true, position: 2 }
 ];
 
 /* Adicionais agora vêm da API real (GET admin/addons); sem mock local. */
 var MOCK_COUPONS_DATA = [
-  { code: 'PUDIMHASS10', ctype: 'percent', cvalue: 10, label: 'Oferta da Brasa: 10% OFF com PUDIMHASS10', max_uses: 100, used: 47, active: true, highlight: true, expires_at: '2026-12-31' },
+  { code: 'PUDIMHASS10', ctype: 'percent', cvalue: 10, label: 'Semana do Pudim: 10% OFF com PUDIMHASS10', max_uses: 100, used: 47, active: true, highlight: true, expires_at: '2026-12-31' },
   { code: 'NOVOCLIENTE', ctype: 'fixed', cvalue: 15, label: 'R$15 off para novos clientes', max_uses: 50, used: 12, active: true, highlight: false, expires_at: '2026-12-31' },
   { code: 'QUINTA15', ctype: 'percent', cvalue: 15, label: 'Quinta do Pudim', max_uses: null, used: 234, active: true, highlight: true, expires_at: '2026-06-30' },
   { code: 'FRETEGRATIS', ctype: 'fixed', cvalue: 8.90, label: 'Frete grátis', max_uses: 200, used: 89, active: false, highlight: false, expires_at: '2026-03-31' }
@@ -416,8 +407,8 @@ var MOCK_AREAS_DATA = [
 ];
 
 var MOCK_BANNERS_DATA = [
-  { id: 1, title: 'Quinta da Lasanha', subtitle: 'Toda quinta 15% off em todo o cardápio', position: 'home-middle', position_order: 1, active: true, period: 'Até 30/12/2026' },
-  { id: 2, title: 'Promoção Casal', subtitle: 'Lasanha 1,5kg + sobremesa por R$149,90', position: 'home-end', position_order: 1, active: true, period: 'Até 15/10/2026' },
+  { id: 1, title: 'Semana do Pudim', subtitle: 'Toda semana 10% off com o cupom PUDIMHASS10', position: 'home-middle', position_order: 1, active: true, period: 'Até 30/12/2026' },
+  { id: 2, title: 'Kit Festa Doce', subtitle: 'Kit festa com pudins e tortas a partir de R$59,90', position: 'home-end', position_order: 1, active: true, period: 'Até 15/10/2026' },
   { id: 3, title: 'Frete Grátis', subtitle: 'Acima de R$120 de pedido', position: 'home-middle', position_order: 2, active: false, period: 'Encerrado' }
 ];
 
@@ -1251,10 +1242,10 @@ function renderOrderActions(order) {
 
 var PRODUCT_COLORS = ['#8B4513','#CD853F','#D2691E','#A0522D','#DEB887','#F4A460','#DAA520','#B8860B','#CC7722','#996515'];
 
-function productImage(lasanha, index) {
-  if (lasanha.image) {
+function productImage(p, index) {
+  if (p.image) {
     return '<div style="width:100%;aspect-ratio:16/10;border-radius:var(--radius-sm);overflow:hidden;">' +
-      '<img src="' + esc(lasanha.image) + '" alt="' + esc(lasanha.name) + '" style="width:100%;height:100%;object-fit:cover;"></div>';
+      '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" style="width:100%;height:100%;object-fit:cover;"></div>';
   }
   var color = PRODUCT_COLORS[index % PRODUCT_COLORS.length];
   return '<div style="width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,' + color + ',' + color + 'cc);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;">' +
@@ -1263,16 +1254,15 @@ function productImage(lasanha, index) {
 
 var S_PUDINS = { q: '', size: '', active: '', cat: '' };
 var PUDINS_DATA = [];
-var LASANHA_CATS = [];
-var LAS_CAT_ORDER = ['classicos', 'deluxe', 'especiais', 'lowcarb', 'frutosdormar',
-  'selecoes-personalizadas', 'selecoes-fechadas', 'doces', 'sobremesas', 'bebidas',
-  'caldas', 'geladinhos'];
+var PUDIM_CATS = [];
+var PUDIM_CAT_ORDER = ['doces', 'eventos', 'sobremesas', 'bebidas',
+  'geladinhos', 'mais-pedidos', 'promocao-do-dia', 'top-mais-vendidos'];
 
   /* Tarefa B — normaliza produto da API (GET /admin/products) para o card da tela Pudins. */
-function lasActive(v) {
+function pudimActive(v) {
   return v === true || v === 1 || v === '1';
 }
-function lasSizePrice(p, s) {
+function pudimSizePrice(p, s) {
   if (s && s.price !== null && s.price !== undefined && s.price !== '') {
     var pv = parseFloat(s.price);
     if (isFinite(pv)) return pv;
@@ -1285,7 +1275,7 @@ function lasSizePrice(p, s) {
 }
 function normPudimFromProduct(p) {
   var sizes = (p.sizes || []).map(function (s) {
-    return { id: s.id, label: s.label || '', factor: parseFloat(s.factor) || 1, price: lasSizePrice(p, s) };
+    return { id: s.id, label: s.label || '', factor: parseFloat(s.factor) || 1, price: pudimSizePrice(p, s) };
   });
   return {
     id: String(p.id || ''),
@@ -1295,7 +1285,7 @@ function normPudimFromProduct(p) {
     description: String(p.description || p.desc || ''),
     image: '',
     sizes: sizes,
-    active: lasActive(p.active),
+    active: pudimActive(p.active),
     badge: String(p.badge || ''),
     position: parseInt(p.position, 10) || 0,
     prepTime: String(p.time_label || p.time || ''),
@@ -1304,15 +1294,15 @@ function normPudimFromProduct(p) {
     _raw: p
   };
 }
-function lasanhaCatName(id, cats) {
+function pudimCatName(id, cats) {
   var found = null;
-  (cats || LASANHA_CATS || []).forEach(function (c) { if (String(c.id) === String(id)) found = c; });
+  (cats || PUDIM_CATS || []).forEach(function (c) { if (String(c.id) === String(id)) found = c; });
   if (found) return found.name || id;
   var lone = (PUDINS_DATA || []).filter(function (p) { return p.category === id; })[0];
   if (lone && lone.catName) return lone.catName;
   return titleCase(String(id || '').replace(/-/g, ' ')) || 'Sem categoria';
 }
-function filterLasanhas(list) {
+function filterPudins(list) {
   var out = list.slice();
   if (S_PUDINS.cat) {
     out = out.filter(function (p) { return String(p.category) === String(S_PUDINS.cat); });
@@ -1322,10 +1312,9 @@ function filterLasanhas(list) {
     out = out.filter(function (p) { return (p.name || '').toLowerCase().indexOf(q) !== -1; });
   }
   if (S_PUDINS.size) {
-    var sizeMap = { g500: '500', g1000: '1', g1500: '1,5', g2500: '2,5' };
-    var needle = sizeMap[S_PUDINS.size] || S_PUDINS.size;
+    var sizeId = S_PUDINS.size;
     out = out.filter(function (p) {
-      return p.sizes && p.sizes.some(function (s) { return (s.label || '').indexOf(needle) !== -1; });
+      return p.sizes && p.sizes.some(function (s) { return String(s.id) === String(sizeId); });
     });
   }
   if (S_PUDINS.active === 'on') {
@@ -1335,15 +1324,15 @@ function filterLasanhas(list) {
   }
   return out;
 }
-function findLasanha(id) {
+function findPudim(id) {
   var f = (PUDINS_DATA || []).filter(function (l) { return String(l.id) === String(id); })[0];
   if (f) return f;
   return (MOCK_PUDINS || []).filter(function (l) { return String(l.id) === String(id); })[0] || null;
 }
-function paintLasanhas() {
+function paintPudins() {
   renderPudins();
 }
-function paintLasanhasSafe() {
+function paintPudinsSafe() {
   try { renderPudins(); } catch (e) {}
 }
 
@@ -1355,7 +1344,7 @@ function renderPudins() {
       renderPudins._loading = false;
       var cats = res[0] || [];
       var prods = res[1] || [];
-      LASANHA_CATS = cats.slice().sort(function (a, b) { return (a.position || 0) - (b.position || 0); });
+      PUDIM_CATS = cats.slice().sort(function (a, b) { return (a.position || 0) - (b.position || 0); });
       PUDINS_DATA = (prods || []).map(normPudimFromProduct);
       PUDINS_DATA.sort(function (a, b) { return (a.position || 0) - (b.position || 0) || (a.name < b.name ? -1 : 1); });
       renderPudins();
@@ -1366,23 +1355,7 @@ function renderPudins() {
     });
     return;
   }
-  var list = filterLasanhas(PUDINS_DATA || []);
-  if (S_PUDINS.q) {
-    var q = S_PUDINS.q.toLowerCase();
-    list = list.filter(function (p) { return p.name.toLowerCase().indexOf(q) !== -1; });
-  }
-  if (S_PUDINS.size) {
-    var sizeMap = { g500: '500', g1000: '1', g1500: '1,5', g2500: '2,5' };
-    var needle = sizeMap[S_PUDINS.size] || S_PUDINS.size;
-    list = list.filter(function (p) {
-      return p.sizes && p.sizes.some(function (s) { return (s.label || '').indexOf(needle) !== -1; });
-    });
-  }
-  if (S_PUDINS.active === 'on') {
-    list = list.filter(function (p) { return !!p.active; });
-  } else if (S_PUDINS.active === 'off') {
-    list = list.filter(function (p) { return !p.active; });
-  }
+  var list = filterPudins(PUDINS_DATA || []);
 
   var toolbar =
     '<div class="toolbar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px">' +
@@ -1391,21 +1364,19 @@ function renderPudins() {
       '</div>' +
       '<div class="chips">' +
         '<button type="button" class="chip' + (S_PUDINS.size === '' ? ' is-on' : '') + '" data-lfilter-size="">Todos</button>' +
-        '<button type="button" class="chip' + (S_PUDINS.size === 'g500' ? ' is-on' : '') + '" data-lfilter-size="g500">500g</button>' +
-        '<button type="button" class="chip' + (S_PUDINS.size === 'g1000' ? ' is-on' : '') + '" data-lfilter-size="g1000">1kg</button>' +
-        '<button type="button" class="chip' + (S_PUDINS.size === 'g1500' ? ' is-on' : '') + '" data-lfilter-size="g1500">1,5kg</button>' +
-        '<button type="button" class="chip' + (S_PUDINS.size === 'g2500' ? ' is-on' : '') + '" data-lfilter-size="g2500">2,5kg</button>' +
+        '<button type="button" class="chip' + (S_PUDINS.size === 'u' ? ' is-on' : '') + '" data-lfilter-size="u">Unidade</button>' +
+        '<button type="button" class="chip' + (S_PUDINS.size === 'kit' ? ' is-on' : '') + '" data-lfilter-size="kit">Kit</button>' +
       '</div>' +
       '<div class="chips">' +
         '<button type="button" class="chip' + (S_PUDINS.active === '' ? ' is-on' : '') + '" data-lfilter-active="">Todos</button>' +
         '<button type="button" class="chip' + (S_PUDINS.active === 'on' ? ' is-on' : '') + '" data-lfilter-active="on">Ativos</button>' +
         '<button type="button" class="chip' + (S_PUDINS.active === 'off' ? ' is-on' : '') + '" data-lfilter-active="off">Inativos</button>' +
       '</div>' +
-      '<button class="btn btn--primary btn--sm" type="button" data-new-lasanha>+ Novo Pudim</button>' +
+      '<button class="btn btn--primary btn--sm" type="button" data-new-pudim>+ Novo Pudim</button>' +
     '</div>';
   toolbar += '<div class="chips" style="margin-bottom:20px">' +
     '<button type="button" class="chip' + (S_PUDINS.cat === '' ? ' is-on' : '') + '" data-lfilter-cat="">Todas (' + (PUDINS_DATA || []).length + ')</button>' +
-    (LASANHA_CATS || []).map(function (c) {
+    (PUDIM_CATS || []).map(function (c) {
       var n = (PUDINS_DATA || []).filter(function (p) { return String(p.category) === String(c.id); }).length;
       return '<button type="button" class="chip' + (S_PUDINS.cat === String(c.id) ? ' is-on' : '') + '" data-lfilter-cat="' + esc(c.id) + '">' + esc(c.name) + ' (' + n + ')</button>';
     }).join('') + '</div>';
@@ -1413,8 +1384,8 @@ function renderPudins() {
   if (list.length === 0) {
     $('#content').innerHTML = toolbar +
       '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:56px;height:56px;color:var(--muted);opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>' +
-      '<div class="empty-state__title">Nenhuma lasanha encontrada</div>' +
-      '<div class="empty-state__text">Ajuste os filtros ou adicione uma nova lasanha.</div></div>';
+      '<div class="empty-state__title">Nenhum pudim encontrado</div>' +
+      '<div class="empty-state__text">Ajuste os filtros ou adicione um novo pudim.</div></div>';
     return;
   }
 
@@ -1432,7 +1403,7 @@ function renderPudins() {
       '<div class="product-card__image">' +
         productImage(las, idx) + badgeHtml +
         '<div class="product-card__toggle">' +
-          '<label class="toggle"><input type="checkbox"' + toggleChecked + ' data-toggle-lasanha="' + esc(las.id) + '">' +
+          '<label class="toggle"><input type="checkbox"' + toggleChecked + ' data-toggle-pudim="' + esc(las.id) + '">' +
           '<span class="toggle__track"><span class="toggle__circle"></span></span></label>' +
         '</div>' +
       '</div>' +
@@ -1444,16 +1415,16 @@ function renderPudins() {
         '<div class="product-card__price">A partir de ' + money(minPrice) + '</div>' +
       '</div>' +
       '<div class="product-card__actions">' +
-        '<button class="btn btn--ghost btn--sm" type="button" data-edit-lasanha="' + esc(las.id) + '">Editar</button>' +
-        '<button class="btn btn--ghost btn--sm" type="button" data-dup-lasanha="' + esc(las.id) + '">Duplicar</button>' +
-        '<button class="btn btn--ghost btn--sm btn--danger" type="button" data-del-lasanha="' + esc(las.id) + '">Excluir</button>' +
+        '<button class="btn btn--ghost btn--sm" type="button" data-edit-pudim="' + esc(las.id) + '">Editar</button>' +
+        '<button class="btn btn--ghost btn--sm" type="button" data-dup-pudim="' + esc(las.id) + '">Duplicar</button>' +
+        '<button class="btn btn--ghost btn--sm btn--danger" type="button" data-del-pudim="' + esc(las.id) + '">Excluir</button>' +
       '</div>' +
     '</div>';
   }).join('');
 
   var order = {};
-  (LASANHA_CATS || []).forEach(function (c, i) { order[String(c.id)] = i; });
-  LAS_CAT_ORDER.forEach(function (id, i) { if (order[id] === undefined) order[id] = 100 + i; });
+  (PUDIM_CATS || []).forEach(function (c, i) { order[String(c.id)] = i; });
+  PUDIM_CAT_ORDER.forEach(function (id, i) { if (order[id] === undefined) order[id] = 100 + i; });
   var groups = {};
   list.forEach(function (p) {
     var k = String(p.category || 'sem-categoria');
@@ -1466,7 +1437,7 @@ function renderPudins() {
   var keys = Object.keys(groups).sort(function (a, b) {
     var oa = order[a] !== undefined ? order[a] : 999;
     var ob = order[b] !== undefined ? order[b] : 999;
-    return oa - ob || (lasanhaCatName(a) < lasanhaCatName(b) ? -1 : 1);
+    return oa - ob || (pudimCatName(a) < pudimCatName(b) ? -1 : 1);
   });
   var idxById = {};
   (PUDINS_DATA || []).forEach(function (p, i) { idxById[String(p.id)] = i; });
@@ -1477,7 +1448,7 @@ function renderPudins() {
       return cardsForGroup(las, gi === undefined ? 0 : gi, list);
     }).join('');
     return '<section style="margin-bottom:28px">' +
-      '<h3 style="font-size:1rem;margin:0 0 12px;display:flex;align-items:center;gap:8px">' + esc(lasanhaCatName(k)) +
+      '<h3 style="font-size:1rem;margin:0 0 12px;display:flex;align-items:center;gap:8px">' + esc(pudimCatName(k)) +
       ' <span class="badge badge--brand">' + items.length + '</span></h3>' +
       '<div class="product-grid">' + gCards + '</div></section>';
   }).join('');
@@ -1497,19 +1468,19 @@ function cardsForGroup(las, gIdx, list) {
   return '<div class="product-card">' +
     '<div class="product-card__image">' + productImage(las, gIdx) + badgeHtml +
       '<div class="product-card__toggle">' +
-        '<label class="toggle"><input type="checkbox"' + toggleChecked + ' data-toggle-lasanha="' + esc(las.id) + '">' +
+        '<label class="toggle"><input type="checkbox"' + toggleChecked + ' data-toggle-pudim="' + esc(las.id) + '">' +
         '<span class="toggle__track"><span class="toggle__circle"></span></span></label>' +
       '</div></div>' +
     '<div class="product-card__info">' +
-      '<div style="font-size:.65rem;color:var(--muted);margin-bottom:2px;letter-spacing:0.05em">#' + num + ' · ' + esc(lasanhaCatName(las.category)) + '</div>' +
+      '<div style="font-size:.65rem;color:var(--muted);margin-bottom:2px;letter-spacing:0.05em">#' + num + ' · ' + esc(pudimCatName(las.category)) + '</div>' +
       '<div class="product-card__name" style="font-family:var(--font-heading)">' + esc(las.name) + '</div>' +
       '<div class="product-card__desc">' + esc(las.description || '') + '</div>' +
       '<div style="font-size:.75rem;color:var(--muted);margin-bottom:6px">' + esc(sizeLabels) + '</div>' +
       '<div class="product-card__price">A partir de ' + money(minPrice) + '</div></div>' +
     '<div class="product-card__actions">' +
-      '<button class="btn btn--ghost btn--sm" type="button" data-edit-lasanha="' + esc(las.id) + '">Editar</button>' +
-      '<button class="btn btn--ghost btn--sm" type="button" data-dup-lasanha="' + esc(las.id) + '">Duplicar</button>' +
-      '<button class="btn btn--ghost btn--sm btn--danger" type="button" data-del-lasanha="' + esc(las.id) + '">Excluir</button>' +
+      '<button class="btn btn--ghost btn--sm" type="button" data-edit-pudim="' + esc(las.id) + '">Editar</button>' +
+      '<button class="btn btn--ghost btn--sm" type="button" data-dup-pudim="' + esc(las.id) + '">Duplicar</button>' +
+      '<button class="btn btn--ghost btn--sm btn--danger" type="button" data-del-pudim="' + esc(las.id) + '">Excluir</button>' +
     '</div></div>';
 }
 
@@ -1568,8 +1539,8 @@ function renderAdicionais() {
     rows = (rows || []).map(normAddon);
     S_ADDONS.rows = rows;
     var list = S_ADDONS.grp ? rows.filter(function (a) { return a.grp === S_ADDONS.grp; }) : rows.slice();
-    var chipGrps = ['Todos','borda','molho','extra','retirar'];
-    var chipLabels = { Todos: 'Todos', borda: 'Borda', molho: 'Molho', extra: 'Extra', retirar: 'Retirar' };
+    var chipGrps = ['Todos','doce'];
+    var chipLabels = { Todos: 'Todos', doce: 'Doces' };
     var toolbar =
       '<div class="toolbar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px">' +
         '<div class="chips">' +
@@ -1958,11 +1929,11 @@ var HOME_FIELDS = {
   ]
 };
 
-var HOME_FIELD_DEFAULTS = {  offer_text: 'Oferta da Brasa: 10% OFF com <b data-offer-code>PUDIMHASS10</b>',
+var HOME_FIELD_DEFAULTS = {  offer_text: 'Semana do Pudim: 10% OFF com <b data-offer-code>PUDIMHASS10</b>',
   offer_code: 'PUDIMHASS10',
-  hero_kicker: 'Artesanal · congelada na hora · pronta para assar',
+  hero_kicker: 'Cremoso, gelado e feito todos os dias',
   hero_title: 'Sabor <span style="white-space:nowrap">que conquista,</span><br> <em>entrega que encanta</em>',
-  hero_tagline: 'Artesanais, ingredientes de verdade e aquele sabor de brasa entregue na sua porta.',
+  hero_tagline: 'Artesanais, ingredientes de verdade e aquele sabor unico de pudim entregue na sua porta.',
   promo_kicker: 'Destaque da semana',
   promo_title: 'A seleção mais<br><em>pedida da casa.</em>',
   promo_name: 'Mesa Farta',
@@ -1979,7 +1950,7 @@ var HOME_STYLEABLE = ['offer', 'hero', 'promocoes', 'footer'];
 
 function openHomeEditModal(s, st) {
   var preview = {
-    offer: '<b>Oferta da Brasa:</b> 10% OFF com <b>PUDIMHASS10</b> + botão “Copiar cupom” + × fechar',
+    offer: '<b>Semana do Pudim:</b> 10% OFF com <b>PUDIMHASS10</b> + botão “Copiar cupom” + × fechar',
     hero: '<b>Sabor que conquista, entrega que encanta</b> · “Artesanais, ingredientes de verdade…” · botões “Pedir agora” e cupom · ★ 4,9 · +800 avaliações',
     cardapio: 'Barra de categorias (Todos, Seleções, Clássicos…) + carrossel de produtos com foto, preço e “Adicionar”',
     promocoes: '<b>Mesa Farta</b> — 4 pudins de 1,5kg · de R$ 405,60 por <b>R$ 356,90</b> (−12% OFF) + frete grátis + cupom PUDIMHASS10',
@@ -2178,13 +2149,6 @@ function cfgIsOn(v) {
 
 function renderConfig() {
   var h =
-    '<div class="config-section"><h3 class="config-section__title">Preparo — taxa Assada</h3><div class="card">' +
-      '<p class="dim" style="font-size:.82rem;margin-bottom:10px">Valor por unidade quando o cliente escolhe <b>Assada</b> no popup do produto. Vale na hora na vitrine (textos e Resumo do preço) e o servidor recalcula o pedido com o mesmo valor. Padrão: R$ 10,00.</p>' +
-      '<div class="form-grid">' +
-        field('cfg-baked-fee', 'Taxa Assada (R$ por unidade)', '10.00', { type: 'number', minor: 'Ex.: 10.00' }) +
-      '</div>' +
-      '<div style="margin-top:12px"><button class="btn btn--primary btn--sm" type="button" data-save-baked-fee>Salvar taxa</button> <small class="dim" id="cfg-baked-fee-status"></small></div>' +
-    '</div></div>' +
     '<div class="config-section"><h3 class="config-section__title">Dados da loja</h3><div class="card"><div class="form-grid">' +
       field('cfg-name', 'Nome da loja', 'Pudim LAPANINI') +
       field('cfg-cnpj', 'CNPJ', '', { placeholder: 'Ex.: 12.345.678/0001-90' }) +
@@ -2261,10 +2225,6 @@ function renderConfig() {
       var r = document.querySelector('input[name="cfg-pay-mode"][value="' + pm + '"]');
       if (r) { r.checked = true; }
     }
-    if (st.baked_fee !== undefined && st.baked_fee !== '') {
-      var bf = document.getElementById('f-cfg-baked-fee');
-      if (bf) { bf.value = st.baked_fee; }
-    }
     var ls = document.getElementById('cfg-load-status');
     if (ls) { ls.textContent = 'Dados carregados do servidor.'; }
   }, function () {
@@ -2273,26 +2233,6 @@ function renderConfig() {
   });
 }
 
-/* Salva só a taxa Assada (PUT admin/settings cria a chave se não existir). */
-function saveBakedFee() {
-  var el = document.getElementById('f-cfg-baked-fee');
-  var raw = el ? String(el.value).replace(',', '.').trim() : '';
-  var v = parseFloat(raw);
-  var stEl = document.getElementById('cfg-baked-fee-status');
-  if (!isFinite(v) || v < 0) { toast('Informe a taxa em R$ (ex.: 10.00).'); return; }
-  v = (Math.round(v * 100) / 100).toFixed(2);
-  if (stEl) { stEl.textContent = 'Salvando…'; }
-  putJ('admin/settings', { settings: { baked_fee: v } }).then(function () {
-    if (el) { el.value = v; }
-    if (stEl) { stEl.textContent = 'Taxa atualizada: R$ ' + v.replace('.', ',') + '.'; }
-    toast('Taxa Assada atualizada!');
-  }, function (e) {
-    if (stEl) { stEl.textContent = ''; }
-    toast((e && e.message) || 'Falha ao salvar.');
-  });
-}
-
-
 /* =====================================================================
    SECTION 20 — Modals
    ===================================================================== */
@@ -2300,24 +2240,19 @@ function saveBakedFee() {
 function pudimModal(pudim) {
   var isNew = !pudim;
   var title = isNew ? 'Novo Pudim' : 'Editar Pudim';
-  var l = pudim || { id: '', name: '', category: 'classicos', description: '', sizes: [], active: true, badge: '', prepTime: '' };
+  var l = pudim || { id: '', name: '', category: 'sobremesas', description: '', sizes: [], active: true, badge: '', prepTime: '' };
   var catOpts = [
-    { v: 'classicos', l: 'Clássicos' }, { v: 'deluxe', l: 'Deluxe' },
-    { v: 'especiais', l: 'Especiais' }, { v: 'lowcarb', l: 'Low Carb' },
-    { v: 'doces', l: 'Kits Mini' }, { v: 'sobremesas', l: 'Sobremesas' },
-    { v: 'bebidas', l: 'Bebidas' },
-    { v: 'selecoes-fechadas', l: 'Seleções Fechadas' },
-    { v: 'selecoes-personalizadas', l: 'Seleções Personalizadas' },
-    { v: 'frutosdormar', l: 'Frutos do Mar' },
-    { v: 'caldas', l: 'Caldas' },
-    { v: 'geladinhos', l: 'Geladinhos' }
+    { v: 'doces', l: 'Kits Mini' }, { v: 'eventos', l: 'Eventos' },
+    { v: 'sobremesas', l: 'Sobremesas' }, { v: 'bebidas', l: 'Bebidas' },
+    { v: 'geladinhos', l: 'Geladinhos' }, { v: 'mais-pedidos', l: 'Os Mais Pedidos' },
+    { v: 'promocao-do-dia', l: 'Promoção do Dia' }, { v: 'top-mais-vendidos', l: 'Top Mais Vendidos' }
   ];
   var sizesHtml = '';
   if (l.sizes && l.sizes.length) {
     sizesHtml = l.sizes.map(function (s, i) {
       return '<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">' +
         '<input class="field__input" type="number" value="' + (s.num || (i + 1)) + '" placeholder="Nº" style="width:50px;padding:8px 10px;font-size:.82rem;text-align:center">' +
-        '<input class="field__input" type="text" value="' + esc(s.label) + '" placeholder="Ex: 1kg · 5 porções" style="flex:1;padding:8px 10px;font-size:.82rem">' +
+        '<input class="field__input" type="text" value="' + esc(s.label) + '" placeholder="Ex: 130g · 1 porção" style="flex:1;padding:8px 10px;font-size:.82rem">' +
         '<input class="field__input" type="number" value="' + (s.price || '') + '" placeholder="Preço" style="width:110px;padding:8px 10px;font-size:.82rem">' +
         '<input class="field__input" type="number" value="' + (s.factor || '') + '" placeholder="Fator" style="width:80px;padding:8px 10px;font-size:.82rem">' +
         '<button class="btn btn--ghost btn--sm btn--danger" type="button" style="padding:6px 10px;font-size:.78rem">✕</button>' +
@@ -2348,7 +2283,7 @@ function pudimModal(pudim) {
     '<button class="btn btn--ghost btn--sm" type="button" id="add-size-btn" style="margin-top:8px">+ Adicionar tamanho</button></div>' +
   '<div style="margin-top:16px;display:flex;justify-content:flex-end;gap:10px">' +
     '<button class="btn btn--ghost" type="button" data-close-modal>Cancelar</button>' +
-    '<button class="btn btn--primary" type="button" data-save-lasanha="' + esc(l.id) + '">' + (isNew ? 'Criar' : 'Salvar') + '</button></div>';
+    '<button class="btn btn--primary" type="button" data-save-pudim="' + esc(l.id) + '">' + (isNew ? 'Criar' : 'Salvar') + '</button></div>';
   openModal(title, html, true);
 
   var imgInput = $('#f-las-image');
@@ -2419,10 +2354,8 @@ function tamanhoModal(tamanho) {
 function adicionalModal(adicional) {
   var isNew = !adicional;
   var title = isNew ? 'Novo Adicional' : 'Editar Adicional';
-  var a = adicional || { id: '', label: '', grp: 'salgado', price: 0, required: false, active: true };
-  var grpOpts = [{ v: 'salgado', l: 'Salgado' }, { v: 'doce', l: 'Doce' },
-    { v: 'borda', l: 'Borda' }, { v: 'molho', l: 'Molho' },
-    { v: 'extra', l: 'Extra' }, { v: 'retirar', l: 'Retirar' }];
+  var a = adicional || { id: '', label: '', grp: 'doce', price: 0, required: false, active: true };
+  var grpOpts = [{ v: 'doce', l: 'Doces' }];
   var html = '<div class="form-grid">' +
     field('ad-label', 'Nome', a.label) +
     field('ad-grp', 'Grupo', a.grp, { type: 'select', options: grpOpts }) +
@@ -2538,7 +2471,7 @@ function hardenProductPayload(p) {
   c.description = cleanStr(c.description, 240);
   c.long = cleanStr(c.long, 2000);
   c.old = (c.old === null || c.old === undefined || c.old === '') ? null : numOr(c.old, null);
-  c.addonGroup = (c.addonGroup === 'salgado' || c.addonGroup === 'doce') ? c.addonGroup : '';
+  c.addonGroup = (c.addonGroup === 'doce') ? c.addonGroup : '';
   c.obsNote = cleanStr(c.obsNote, 200);
   c.badge = cleanStr(c.badge, 40);
   c.min = Math.max(0, Math.floor(numOr(c.min, 0)));
@@ -2661,7 +2594,7 @@ function pudimModalSizes() {
   });
   return out;
 }
-function lasanhaBaseFromSizes(sizes, fallback) {
+function pudimBaseFromSizes(sizes, fallback) {
   var best = Infinity;
   (sizes || []).forEach(function (s) {
     var p = parseFloat(s.price);
@@ -2673,15 +2606,15 @@ function lasanhaBaseFromSizes(sizes, fallback) {
   if (isFinite(fb) && fb > 0) return fb;
   return 0;
 }
-function lasanhaToApiPayload(cur, modal) {
+function pudimToApiPayload(cur, modal) {
   var raw = (cur && cur._raw) || {};
   var sizes = (modal.sizes || []).map(function (s, i) {
     var old = (raw.sizes || [])[i] || {};
     return { id: old.id || s.id || ('s' + (i + 1)), label: s.label, factor: s.factor || 1, price: s.price };
   });
-  var base = lasanhaBaseFromSizes(sizes, raw.base_price);
-  var cat = modal.cat || raw.cat_id || raw.cat || ((cur && cur.category) || 'classicos');
-  var addonGroup = raw.addon_group || raw.addonGroup || ((cat === 'doces' || cat === 'sobremesas') ? 'doce' : 'salgado');
+  var base = pudimBaseFromSizes(sizes, raw.base_price);
+  var cat = modal.cat || raw.cat_id || raw.cat || ((cur && cur.category) || 'sobremesas');
+  var addonGroup = raw.addon_group || raw.addonGroup || ((cat === 'doces' || cat === 'sobremesas') ? 'doce' : '');
   return {
     name: modal.name,
     cat: cat,
@@ -2699,7 +2632,7 @@ function lasanhaToApiPayload(cur, modal) {
     maxPerFlavor: raw.max_per_flavor || raw.maxPerFlavor || 0,
     sizeLabel: raw.size_label || raw.sizeLabel || '',
     discount: raw.discount || 0,
-    time: modal.prepTime || raw.time_label || raw.time || '25–35 min de forno',
+    time: modal.prepTime || raw.time_label || raw.time || 'Feito no dia',
     tags: raw.tags || [],
     position: (raw?.position || (cur && cur.position) || 0),
     active: (cur ? !!cur.active : true),
@@ -2709,7 +2642,7 @@ function lasanhaToApiPayload(cur, modal) {
     pool: raw.pool || []
   };
 }
-function applyLasanhaSaved(saved, isNew) {
+function applyPudimSaved(saved, isNew) {
   var norm = normPudimFromProduct(saved);
   var idx = -1;
   (PUDINS_DATA || []).forEach(function (l, i) { if (String(l.id) === String(norm.id)) idx = i; });
@@ -2719,8 +2652,8 @@ function applyLasanhaSaved(saved, isNew) {
   toast(isNew ? 'Pudim criado no cardápio!' : 'Pudim atualizado no cardápio!');
   renderPudins();
 }
-function saveLasanhaFallback(id, data, sizes) {
-  console.error('[lasanhas] API falhou, fallback local (MOCK_PUDINS).');
+function savePudimFallback(id, data, sizes) {
+  console.error('[pudins] API falhou, fallback local (MOCK_PUDINS).');
   if (id) {
     var idx = -1;
     MOCK_PUDINS.forEach(function (l, i) { if (String(l.id) === String(id)) idx = i; });
@@ -2743,13 +2676,13 @@ function saveLasanhaFallback(id, data, sizes) {
   try { renderPudins(); } catch (e) {}
 }
 
-function saveLasanha() {
+function savePudim() {
   var name = val('las-name');
   if (!name) { toast('Informe o nome do pudim'); return; }
   var modal = { name: name, cat: val('las-cat'), description: val('las-desc'), badge: val('las-badge'), prepTime: val('las-prep') };
-  var idEl = $('[data-save-lasanha]');
-  var id = idEl ? idEl.getAttribute('data-save-lasanha') : '';
-  var cur = id ? findLasanha(id) : null;
+  var idEl = $('[data-save-pudim]');
+  var id = idEl ? idEl.getAttribute('data-save-pudim') : '';
+  var cur = id ? findPudim(id) : null;
   var btn = idEl;
   function setBusy(b) { if (btn) { btn.disabled = !!b; btn.textContent = b ? 'Salvando…' : (id ? 'Salvar' : 'Criar'); } }
 
@@ -2758,7 +2691,7 @@ function saveLasanha() {
     modalSizes = cur.sizes.map(function (s) { return { label: s.label, price: s.price, factor: s.factor }; });
   }
   modal.sizes = modalSizes;
-  var payload = lasanhaToApiPayload(cur, modal);
+  var payload = pudimToApiPayload(cur, modal);
   if (id && cur && cur._raw && cur._raw.sizes && !payload.sizes.length) {
     payload.sizes = cur._raw.sizes;
   }
@@ -2789,26 +2722,26 @@ function saveLasanha() {
     function () { setBusy(false); cfReset(); }
   );
   req.then(function (saved) {
-    applyLasanhaSaved(saved, !id);
+    applyPudimSaved(saved, !id);
   }, function (e) {
-    logErr('[lasanhas] save falhou:', e);
+    logErr('[pudins] save falhou:', e);
     var msg = safeErrMsg(e, 'Falha ao salvar.');
     if (e && e.status === 404 && id) {
       setBusy(true);
       withFinally(postJ('admin/products', payload), function () { setBusy(false); cfReset(); }).then(function (saved2) {
-        applyLasanhaSaved(saved2, true);
+        applyPudimSaved(saved2, true);
       }, function (e2) {
-        logErr('[lasanhas] save retry falhou:', e2);
+        logErr('[pudins] save retry falhou:', e2);
         if (handleAuthExpired(e2)) { return; }
         toast(msg, true);
-        if (!cur || !cur._api) { saveLasanhaFallback(id, uiData, modalSizes); }
+        if (!cur || !cur._api) { savePudimFallback(id, uiData, modalSizes); }
         else { console.error("Falha na requisição da API de produção. Fallback local ignorado para dados reais."); }
       });
       return;
     }
     if (handleAuthExpired(e)) { return; }
     toast(msg, true);
-    if (!id || !cur || !cur._api) { saveLasanhaFallback(id, uiData, modalSizes); }
+    if (!id || !cur || !cur._api) { savePudimFallback(id, uiData, modalSizes); }
     else { console.error("Falha na requisição da API de produção. Fallback local ignorado para dados reais."); }
   });
 }
@@ -3030,8 +2963,8 @@ function lgpdRetention() {
   });
 }
 
-function deleteLasanha(id, btn) {
-  var cur = findLasanha(id);
+function deletePudim(id, btn) {
+  var cur = findPudim(id);
   if (!window.confirm('Excluir "' + ((cur && cur.name) || id) + '" do cardápio?')) return;
   if (DEL_BUSY[id]) { return; }
   DEL_BUSY[id] = true;
@@ -3052,11 +2985,11 @@ function deleteLasanha(id, btn) {
     toast('Excluído do cardápio');
     renderPudins();
   }, function (e) {
-    logErr('[lasanhas] delete falhou:', e);
+    logErr('[pudins] delete falhou:', e);
     if (handleAuthExpired(e)) { return; }
     toast(safeErrMsg(e, 'Falha ao excluir.'), true);
     if (!cur || !cur._api) {
-      console.error('[lasanhas] API falhou, fallback local (MOCK_PUDINS).');
+      console.error('[pudins] API falhou, fallback local (MOCK_PUDINS).');
       MOCK_PUDINS = MOCK_PUDINS.filter(function (l) { return String(l.id) !== String(id); });
       toast('Excluído (local, API fora do ar)');
       try { renderPudins(); } catch (err) {}
@@ -3123,13 +3056,13 @@ function deleteBanner(id) {
    .catch(function (e) { cfReset(); toast(e.message, true); });
 }
 
-function duplicateLasanha(id, btn) {
-  var orig = findLasanha(id);
+function duplicatePudim(id, btn) {
+  var orig = findPudim(id);
   if (!orig) { toast('Produto não encontrado.', true); return; }
   if (btn) { btn.disabled = true; }
   function unbtn() { if (btn) { btn.disabled = false; } }
   function fallbackCopy() {
-    console.error('[lasanhas] duplicate falhou, fallback local (MOCK_PUDINS).');
+    console.error('[pudins] duplicate falhou, fallback local (MOCK_PUDINS).');
     var copy = JSON.parse(JSON.stringify(orig));
     copy.id = 'las-' + Date.now();
     copy.name = copy.name + ' (Cópia)';
@@ -3147,13 +3080,13 @@ function duplicateLasanha(id, btn) {
     (PUDINS_DATA || []).forEach(function (l) { if ((l.position || 0) > maxPos) maxPos = l.position; });
     var payload = {
       name: (raw.name || orig.name) + ' (Cópia)',
-      cat: raw.cat_id || raw.cat || orig.category || 'classicos',
+      cat: raw.cat_id || raw.cat || orig.category || 'sobremesas',
       type: raw.type || 'reg',
       base: parseFloat(raw.base_price) || orig.base_price || 0,
       description: raw.description || orig.description || '',
       long: raw.long_desc || raw.long || '',
       old: (raw.old_price === undefined || raw.old_price === null) ? (raw.old || null) : raw.old_price,
-      addonGroup: raw.addon_group || raw.addonGroup || 'salgado',
+      addonGroup: raw.addon_group || raw.addonGroup || '',
       obsNote: raw.obs_note || raw.obsNote || '',
       encomenda: !!raw.encomenda,
       freteGratis: !!raw.frete_gratis || !!raw.freteGratis,
@@ -3162,7 +3095,7 @@ function duplicateLasanha(id, btn) {
       maxPerFlavor: raw.max_per_flavor || raw.maxPerFlavor || 0,
       sizeLabel: raw.size_label || raw.sizeLabel || '',
       discount: raw.discount || 0,
-      time: raw.time_label || raw.time || orig.prepTime || '25–35 min de forno',
+      time: raw.time_label || raw.time || orig.prepTime || 'Feito no dia',
       tags: raw.tags || [],
       position: maxPos + 1,
       active: true,
@@ -3191,7 +3124,7 @@ function duplicateLasanha(id, btn) {
       toast('Pudim duplicado! Novo ID: ' + norm.id);
       renderPudins();
     }, function (e) {
-      logErr('[lasanhas] duplicate falhou:', e);
+      logErr('[pudins] duplicate falhou:', e);
       if (handleAuthExpired(e)) { return; }
       toast(safeErrMsg(e, 'Falha ao duplicar.'), true);
       if (!orig._api) { fallbackCopy(); }
@@ -3200,7 +3133,7 @@ function duplicateLasanha(id, btn) {
   }
   if (orig._api) {
     getJ('admin/products/' + encodeURIComponent(id)).then(doPost, function (e) {
-      logErr('[lasanhas] duplicate get falhou:', e);
+      logErr('[pudins] duplicate get falhou:', e);
       doPost(null);
     });
   } else {
@@ -3988,7 +3921,7 @@ function saveSobremesa() {
           maxPerFlavor: f.max_per_flavor || f.maxPerFlavor || 0,
           sizeLabel: f.size_label || f.sizeLabel || '',
           discount: f.discount || 0,
-          time: f.time_label || f.time || '25–35 min de forno',
+          time: f.time_label || f.time || 'Feito no dia',
           tags: f.tags || [],
           position: f.position || cur.position || 0,
           active: !!cur.active,
@@ -4218,7 +4151,7 @@ function fullToActivePayload(full, next) {
   };
 }
 function syncLocalActive(kind, id, next) {
-  if (kind === 'lasanha') {
+  if (kind === 'pudim') {
     (PUDINS_DATA || []).forEach(function (l) { if (String(l.id) === String(id)) l.active = next; });
   } else if (kind === 'sobremesa') {
     (S_SOBREMESAS.rows || []).forEach(function (s) { if (String(s.id) === String(id)) s.active = next; });
@@ -4227,12 +4160,12 @@ function syncLocalActive(kind, id, next) {
   }
 }
 function paintKind(kind) {
-  if (kind === 'lasanha') { try { renderPudins(); } catch (e) {} }
+  if (kind === 'pudim') { try { renderPudins(); } catch (e) {} }
   else if (kind === 'sobremesa') { try { renderSobremesas(); } catch (e) {} }
   else { try { renderBebidas(); } catch (e) {} }
 }
 function toggleProductActive(kind, id, box) {
-  var finders = { lasanha: findLasanha, sobremesa: findSobremesa, bebida: findBebida };
+  var finders = { pudim: findPudim, sobremesa: findSobremesa, bebida: findBebida };
   var cur = finders[kind](id);
   if (!cur) { toast('Item não encontrado.', true); return; }
   var next = !cur.active;
@@ -4336,7 +4269,7 @@ function contentClick(e) {
   if (t.closest('[data-close-modal]')) { closeModal(); return; }
   if (t.closest('[data-close-drawer]')) { closeOrderDrawer(); return; }
 
-  if (t.closest('[data-new-lasanha]')) { pudimModal(null); return; }
+  if (t.closest('[data-new-pudim]')) { pudimModal(null); return; }
 
   var lfs = t.closest('[data-lfilter-size]');
   if (lfs) { S_PUDINS.size = lfs.getAttribute('data-lfilter-size'); renderPudins(); return; }
@@ -4349,14 +4282,14 @@ function contentClick(e) {
   var pfc = t.closest('[data-pfilter-cat]');
   if (pfc) { S_PUDINS.cat = pfc.getAttribute('data-pfilter-cat'); paintPudins(S_SOBREMESAS.rows || []); return; }
 
-  var el = t.closest('[data-edit-lasanha]');
-  if (el) { var f = findLasanha(el.getAttribute('data-edit-lasanha')); if (f) pudimModal(f); return; }
-  el = t.closest('[data-del-lasanha]');
-  if (el) { deleteLasanha(el.getAttribute('data-del-lasanha'), el); return; }
-  el = t.closest('[data-dup-lasanha]');
-  if (el) { duplicateLasanha(el.getAttribute('data-dup-lasanha'), el); return; }
-  el = t.closest('[data-toggle-lasanha]');
-  if (el) { toggleProductActive('lasanha', el.getAttribute('data-toggle-lasanha'), el); return; }
+  var el = t.closest('[data-edit-pudim]');
+  if (el) { var f = findPudim(el.getAttribute('data-edit-pudim')); if (f) pudimModal(f); return; }
+  el = t.closest('[data-del-pudim]');
+  if (el) { deletePudim(el.getAttribute('data-del-pudim'), el); return; }
+  el = t.closest('[data-dup-pudim]');
+  if (el) { duplicatePudim(el.getAttribute('data-dup-pudim'), el); return; }
+  el = t.closest('[data-toggle-pudim]');
+  if (el) { toggleProductActive('pudim', el.getAttribute('data-toggle-pudim'), el); return; }
   el = t.closest('[data-toggle-adicional]');
   if (el) {
     var aid2 = el.getAttribute('data-toggle-adicional');
@@ -4510,14 +4443,13 @@ function contentClick(e) {
     return;
   }
 
-  if (t.closest('[data-save-lasanha]')) { saveLasanha(); return; }
+  if (t.closest('[data-save-pudim]')) { savePudim(); return; }
   if (t.closest('[data-save-tamanho]')) { saveTamanho(); return; }
   if (t.closest('[data-save-adicional]')) { saveAdicional(); return; }
   if (t.closest('[data-save-cupom]')) { saveCupom(); return; }
   if (t.closest('[data-save-area]')) { saveArea(); return; }
   if (t.closest('[data-save-banner]')) { saveBanner(); return; }
   if (t.closest('[data-save-config]')) { saveConfig(); return; }
-  if (t.closest('[data-save-baked-fee]')) { saveBakedFee(); return; }
   if (t.closest('[data-lgpd-consents]')) { lgpdConsents(); return; }
   if (t.closest('[data-lgpd-anonymize]')) { lgpdAnonymize(); return; }
   if (t.closest('[data-lgpd-retention]')) { lgpdRetention(); return; }
@@ -4693,8 +4625,6 @@ function printOrderDoc(o) {
 
 /* ---------- Insumos ---------- */
 var ING_CATS = [
-  { id: 'massa-fresca', l: 'Massa Fresca' },
-  { id: 'molhos', l: 'Molhos Caseiros' },
   { id: 'geral',  l: 'Geral' }
 ];
 var S_ING = { cat: '' };
@@ -4999,10 +4929,8 @@ function ingredientModal(item) {
 /* ---------- Ficha Técnica ---------- */
 var S_FICHA = { prods: [], cats: [], status: {} };
 
-/* Categorias fora da operação Pudim LAPANINI: ocultas da Ficha Técnica
-   (pudins e seleções — sem ficha e sem insumos no financeiro novo). */
-var FICHA_HIDDEN_CATS = ['selecoes-fechadas', 'selecoes-personalizadas',
-  'classicos', 'deluxe', 'especiais', 'lowcarb', 'frutosdormar'];
+/* Todas as 8 categorias participam da Ficha Técnica (estrutura pronta p/ pudim). */
+var FICHA_HIDDEN_CATS = [];
 function fichaVisible(p) {
   return FICHA_HIDDEN_CATS.indexOf(String((p && (p.cat_id || p.cat)) || '')) === -1;
 }
@@ -5140,28 +5068,13 @@ var S_FH_CAT = '';
 /* Tipo da ficha pela categoria do produto: caldas → molho (é líquido,
    exige volume), categorias de pudim → pudim, resto → ''
    (sem campos obrigatórios extras). Espelha ficha_type_for() no PHP. */
+/* Tipo de ficha por categoria (loja de pudins: sem tipos especiais). */
 function fichaTypeFor(pid, catId) {
-  var c = String(catId || '').toLowerCase();
-  if (!c) {
-    var p = (S_FICHA.prods || []).filter(function (x) { return x.id === pid; })[0];
-    c = String((p && (p.cat_id || p.cat)) || '').toLowerCase();
-  }
-  if (c === 'caldas') { return 'molho'; }
-  if (['classicos', 'deluxe', 'especiais', 'lowcarb', 'frutosdormar'].indexOf(c) !== -1) { return 'lasanha'; }
   return '';
 }
 
 /* Campos obrigatórios por tipo (id do input no modal + rótulo). */
 function fichaRequiredFields(t) {
-  if (t === 'massa') {
-    return [{ id: 'f-fh-peso', label: 'Peso (g)' }, { id: 'f-fh-valref', label: 'Validade refrigerada' }, { id: 'f-fh-uso', label: 'Modo de uso' }];
-  }
-  if (t === 'molho') {
-    return [{ id: 'f-fh-vol', label: 'Volume (mL)' }, { id: 'f-fh-valref', label: 'Validade refrigerada' }, { id: 'f-fh-rendl', label: 'Rendimento (L)' }];
-  }
-  if (t === 'lasanha') {
-    return [{ id: 'f-fh-peso', label: 'Peso (g)' }, { id: 'f-fh-rend', label: 'Rendimento' }, { id: 'f-fh-grat', label: 'Tempo de gratinado (min)' }];
-  }
   return [];
 }
 
@@ -5233,14 +5146,9 @@ function openFichaEditor(productId) {
       field('fh-contam', 'Contaminação cruzada', hv('contaminacao', '')) +
       field('fh-foto', 'Foto padrão (URL)', hv('foto_url', '')) +
       field('fh-aprov', 'Aprovado por', hv('aprovado_por', '')) +
-      (ftype === 'lasanha' ? field('fh-grat', 'Tempo de gratinado (min)', hv('tempo_gratinado'), { type: 'number' }) : '') +
-      (ftype === 'molho' ? field('fh-vol', 'Volume (mL)', hv('volume_ml'), { type: 'number' }) +
-        field('fh-rendl', 'Rendimento (L)', hv('rendimento_em_l'), { type: 'number' }) : '') +
     '</div>' +
     '<div class="field" style="margin-top:10px"><label class="field__label" for="f-fh-modo">Modo de preparo</label>' +
-    '<textarea class="field__input" id="f-fh-modo" rows="3" placeholder="1. ...&#10;2. ...">' + esc(hv('modo_preparo')) + '</textarea></div>' +
-    (ftype === 'massa' ? '<div class="field" style="margin-top:10px"><label class="field__label" for="f-fh-uso">Modo de uso</label>' +
-    '<textarea class="field__input" id="f-fh-uso" rows="3" placeholder="Como usar a massa (cozinhar, abrir, cortar)…">' + esc(hv('modo_de_uso')) + '</textarea></div>' : '') + '</div>';
+    '<textarea class="field__input" id="f-fh-modo" rows="3" placeholder="1. ...&#10;2. ...">' + esc(hv('modo_preparo')) + '</textarea></div></div>';
 
     h += '<div class="card" style="margin-bottom:12px"><div class="field__label" style="margin-bottom:8px">Ingredientes (qtd. líquida × fator de correção = qtd. bruta)</div>';
     h += '<div id="ficha-items">';
@@ -6084,7 +5992,7 @@ function printSellersReport(sellerId) {
    ===================================================================== */
 
 var RENDER = {
-  dashboard: renderDashboard, pedidos: renderPedidos, lasanhas: renderPudins, pudins: renderPudins,
+  dashboard: renderDashboard, pedidos: renderPedidos, pudins: renderPudins,
   tamanhos: renderTamanhos, adicionais: renderAdicionais, bebidas: renderBebidas,
   sobremesas: renderSobremesas, cupons: renderCupons,
   areas: renderAreas, banners: renderBanners, home: renderHome, config: renderConfig,
@@ -6174,7 +6082,7 @@ var RENDER = {
       }
       if (t.closest('[data-save-banner]')) { saveBanner(); return; }
       if (t.closest('[data-save-home]')) { saveHomeEdit(t.closest('[data-save-home]').getAttribute('data-save-home')); return; }
-      if (t.closest('[data-save-lasanha]')) { saveLasanha(); return; }
+      if (t.closest('[data-save-pudim]')) { savePudim(); return; }
       // Insumo e ficha técnica abrem em modal: o clique borbulha para o
       // #modal (irmão do #content), nunca chega ao contentClick.
       if (t.closest('[data-save-ingredient]')) { saveIngredient(t.closest('[data-save-ingredient]')); return; }

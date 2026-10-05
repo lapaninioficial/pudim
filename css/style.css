@@ -1,5 +1,5 @@
 /* =====================================================================
-   La Panini — Lasanhas Artesanais
+   Pudim Lapanini — Pudins Artesanais
    Identidade: Nocturno & Artesanal Premium
    Protótipo navegável one-page (front-end puro), modelo de delivery.
    Cobre todos os elementos renderizados por app.js e o markup fixo do
@@ -903,7 +903,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 14px); }
 .price__now {
   font-family: var(--font-body);
   font-size: 1.35rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-pudding-cream);
   line-height: 1;
 }
@@ -3188,12 +3188,19 @@ body.reveal .xs-item.is-in { opacity: 1; transform: none; }
 
 h1, h2, h3 { font-weight: 400; }
 
-/* Sobremesas e Bebidas: preço em peso 600 (DM Sans SemiBold). Usa a fonte
+/* Sobremesas e Bebidas: preço em peso 700 (DM Sans Bold). Usa a fonte
    do corpo porque o Anton SC só existe em 400. */
 .p-card[data-pcat="sobremesas"] .price__now,
 .p-card[data-pcat="bebidas"] .price__now {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+/* Vitrine: valor do pudim com peso máximo (DM Sans 700, já carregada),
+   por cima da regra de nitidez abaixo. */
+.p-card .price__now {
+  font-family: var(--font-body);
+  font-weight: 700;
 }
 
 /* =====================================================================
@@ -3201,7 +3208,6 @@ h1, h2, h3 { font-weight: 400; }
    sintetizado pelo navegador (texto borrado). Força o peso real.
    ===================================================================== */
 h4,
-.price__now,
 .promo__coupon b,
 .benefits__grid b,
 .cart-row__price,

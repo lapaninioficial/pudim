@@ -1,8 +1,9 @@
-# La Panini — assets
+# Pudim Lapanini — assets
 
-Esta pasta guarda os recursos visuais do protótipo navegável (fase de
-validação visual). Nenhum arquivo aqui é definitivo: a versão funcional
-PHP/MySQL carregará as fotos, o logo e os textos do servidor/banco.
+Esta pasta guarda os recursos visuais da loja (versão funcional
+PHP/MySQL): o logo oficial, as fotos dos produtos (id = slug do banco)
+e o favicon. Textos, taxas e horários vêm de `settings`/`areas` no MySQL e
+são editáveis pelo painel em **Configurações** / **Áreas de entrega**.
 
 ## Estrutura
 
@@ -27,22 +28,23 @@ carregar automaticamente `assets/img/<id-do-produto>.jpg`. Se o arquivo
 existir, a foto aparece; se não, o protótipo exibe a ilustração SVG
 (`dishSVG()`). Basta criar as fotos com o id exato.
 
-Ids do catálogo (de `js/catalog.js`):
+Ids do catálogo (de `js/catalog.js`, 8 categorias):
 
-- **Kits:** `mesa-farta`, `experiencia-mesa`, `curadoria-casa`
-- **Seleções:** `selecao-generosa`, `selecao-compartilhar`, `selecao-essencial`
-- **Clássicos:** `bolonhesa-branca`, `bolonhesa-vermelha`, `brocolis-cream-cheese`,
-  `frango-branca`, `frango-vermelha`, `presunto-branca`, `presunto-vermelha`
-- **Deluxe:** `queijos-gorgonzola`, `gorgonzola-bacon`, `carne-madeira`, `frango-requeijao`
-- **Especiais:** `cogumelos`, `carne-gorgonzola`, `file-mignon`
-- **Low Carb:** `abobrinha-frango`
-- **Frutos do Mar:** `camarao-branco`, `bacalhau`
-- **Doces:** `romeu-julieta`, `california`
+- **Kits Mini:** `kit-mini-festa`, `kit-mini-reuniao`, `kit-mini-caseiro`,
+  `kit-mini-aniversario`, `kit-mini-cafe-tarde`
+- **Eventos:** `kit-festa-doce-10un`, `kit-casamento-mini`,
+  `kit-aniversario-kids`, `kit-escritorio`, `kit-degustacao`
 - **Sobremesas:** `torta-alfajor`, `chaja`, `choc-belga`, `sorvete-alfajor`,
-  `pudim-tradicional`, `pudim-coco`, `pudim-cafe`, `pudim-doce-leite`
+  `pudim-tradicional`, `pudim-tradicional-380g`, `pudim-coco`, `pudim-cafe`,
+  `pudim-doce-leite`, `pudim-pacoca-130g`, `pudim-limao-130g`
+- **Bebidas:** `coca-cola-350`, `guarana-350`, `suco-laranja`,
+  `agua-mineral`, `suco-maracuja`
+- **Geladinhos:** `base-geladinho-leite-moca`, `base-geladinho-coco`
+- **Mais Pedidos / Promoção do Dia / Top Mais Vendidos:** ids `pudim-*`
+  (ver `js/catalog.js`)
 
-Exemplos de arquivos: `assets/img/bolonhesa-branca.jpg`,
-`assets/img/file-mignon.jpg`, `assets/img/mesa-farta.jpg`.
+Exemplos de arquivos: `assets/img/torta-alfajor-na-fatia.webp`,
+`assets/img/pudim-de-coco-130g.svg`, `assets/img/coca-cola-350.webp`.
 
 Recomendação para as fotos: fundo escuro, iluminação quente lateral, foco
 nos ingredientes, sem textos sobrepostos — coerente com a identidade

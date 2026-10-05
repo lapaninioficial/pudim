@@ -25,6 +25,9 @@ sql/backup/
 *.sql.bak
 *.bak
 
+# Pacote de deploy (artefato gerado: deploy/public_html + dump final)
+deploy/
+
 # Sistema operacional e editores
 .DS_Store
 Thumbs.db

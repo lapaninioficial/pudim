@@ -253,31 +253,7 @@ function removals_total(array $labels, array $ingredients): float
     return round2($sum);
 }
 
-/* Preparo (Congelada/Assada) só existe para lasanhas nos tamanhos padrão
-   (g500/g1000/g1500) — espelha hasPreparo() da vitrine. Minis, doces,
-   sobremesas e bebidas não têm preparo (nada de "Congelada" no pudim). */
-function has_preparo(array $p): bool
-{
-    if (($p['type'] ?? '') !== 'reg' || empty($p['sizes'])) {
-        return false;
-    }
-    foreach ($p['sizes'] as $s) {
-        if (in_array($s['id'], ['g500', 'g1000', 'g1500'], true)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/** Taxa fixa por unidade para entregar assada (configurável via settings.baked_fee). */
-function baked_fee(): float
-{
-    $s = cs_settings();
-    if (isset($s['baked_fee']) && is_numeric($s['baked_fee'])) {
-        return round2(max(0, (float)$s['baked_fee']));
-    }
-    return 10.0;
-}
+/* Pudins nao tem preparo: tudo sai pronto da casa, sem taxa extra. */
 
 function selection_unit(array $p): float
 {
@@ -500,9 +476,6 @@ function build_order_item(array $req): array
     $qty    = max(1, (int)($req['qty'] ?? 1));
     $sizeId = (string)($req['sizeId'] ?? ($p['sizes'][0]['id'] ?? 'u'));
     $base   = price_for_size($p, $sizeId);
-    // Ignora "baked" forjado em produto sem preparo (evita taxa e rótulo indevidos).
-    $baked  = !empty($req['baked']) && has_preparo($p);
-    $bakedFee = $baked ? baked_fee() : 0.0;
     $addons = array_map('strval', is_array($req['addons'] ?? null) ? $req['addons'] : []);
     $rem    = array_map('strval', is_array($req['removed'] ?? null) ? $req['removed'] : []);
     foreach ($rem as $r) {
@@ -518,7 +491,7 @@ function build_order_item(array $req): array
         }
     }
 
-    $unit  = round2($base + addons_total($addons) + removals_total($rem, $p['ingredients']) + $bakedFee);
+    $unit  = round2($base + addons_total($addons) + removals_total($rem, $p['ingredients']));
     $details = [];
     foreach ($p['sizes'] as $s) {
         if ($s['id'] === $sizeId) {
@@ -528,9 +501,6 @@ function build_order_item(array $req): array
     }
     if (!$details) {
         $details[] = $sizeId;
-    }
-    if (has_preparo($p)) {
-        $details[] = $baked ? 'Assada' : 'Congelada';
     }
     if ($rem) {
         $details[] = 'sem ' . implode(', ', array_map('strtolower', $rem));

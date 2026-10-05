@@ -118,7 +118,7 @@ function upsert_product(array $d, ?array $existing): array
         'long_desc'     => trim((string)pick($d, 'long', '')),
         'old_price'     => pick($d, 'old', null) !== null ? (float)$d['old'] : null,
         'type'          => $type,
-        'addon_group'   => in_array((string)pick($d, 'addonGroup', ''), ['salgado', 'doce'], true) ? $d['addonGroup'] : '',
+        'addon_group'   => (string)pick($d, 'addonGroup', '') === 'doce' ? 'doce' : '',
         'obs_note'      => trim((string)pick($d, 'obsNote', '')),
         'encomenda'     => to_bool(pick($d, 'encomenda', false)) ? 1 : 0,
         'frete_gratis'  => $type === 'kit' && to_bool(pick($d, 'freteGratis', false)) ? 1 : 0,
@@ -127,7 +127,7 @@ function upsert_product(array $d, ?array $existing): array
         'max_per_flavor'=> $type === 'selection' ? max(1, (int)pick($d, 'maxPerFlavor', 2)) : 0,
         'size_label'    => mb_substr(trim((string)pick($d, 'sizeLabel', '')), 0, 60),
         'discount'      => $type === 'selection' ? (float)pick($d, 'discount', 0) : 0,
-        'time_label'    => mb_substr(trim((string)pick($d, 'time', '25–35 min de forno')), 0, 60),
+        'time_label'    => mb_substr(trim((string)pick($d, 'time', 'Feito no dia')), 0, 60),
         'tags'          => implode(',', (array)pick($d, 'tags', [])),
         'position'      => (int)pick($d, 'position', 0),
         'active'        => to_bool(pick($d, 'active', true)) ? 1 : 0,
@@ -182,16 +182,7 @@ function insert_product_rows(string $id, string $type, array $d): void
     $sizes = is_array($d['sizes'] ?? null) ? $d['sizes'] : [];
     if (!$sizes) {
         if ($type === 'reg') {
-            $grp = (string)pick($d, 'addonGroup', 'salgado');
-            if ($grp === 'doce') {
-                $sizes = [['id' => 'u', 'label' => 'Unidade', 'factor' => 1]];
-            } else {
-                $sizes = [
-                    ['id' => 'g500',  'label' => '500g · 3 porções',  'factor' => 1.0],
-                    ['id' => 'g1000', 'label' => '1kg · 5 porções',   'factor' => 1.6],
-                    ['id' => 'g1500', 'label' => '1,5kg · 8 porções', 'factor' => 2.1],
-                ];
-            }
+            $sizes = [['id' => 'u', 'label' => 'Unidade', 'factor' => 1]];
         } else {
             $sizes = [['id' => 'kit', 'label' => 'Kit fechado', 'factor' => 1]];
         }

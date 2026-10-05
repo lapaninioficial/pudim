@@ -4,26 +4,16 @@
  * Ficha Técnica · CMV · Coeficiente · Extras Financeiros
  */
 
-/** Tipo de ficha pela categoria do produto ('' = sem campos obrigatórios extras). */
+/** Tipo de ficha pela categoria do produto ('' = sem campos obrigatórios extras).
+ *  Loja de pudins: nenhum tipo exige campos extras (estrutura pronta p/ dados de pudim). */
 function ficha_type_for(string $catId): string
 {
-    $c = mb_strtolower(trim($catId));
-    if ($c === 'caldas') { return 'molho'; }
-    if (in_array($c, ['classicos', 'deluxe', 'especiais', 'lowcarb', 'frutosdormar'], true)) { return 'lasanha'; }
     return '';
 }
 
 /** Campos obrigatórios da ficha por tipo: pares [coluna, rótulo]. */
 function ficha_required_for(string $type): array
 {
-    switch ($type) {
-        case 'massa':
-            return [['peso_gramas', 'Peso (g)'], ['validade_refrig', 'Validade refrigerada'], ['modo_de_uso', 'Modo de uso']];
-        case 'molho':
-            return [['volume_ml', 'Volume (mL)'], ['validade_refrig', 'Validade refrigerada'], ['rendimento_em_l', 'Rendimento (L)']];
-        case 'lasanha':
-            return [['peso_gramas', 'Peso (g)'], ['rendimento', 'Rendimento'], ['tempo_gratinado', 'Tempo de gratinado (min)']];
-    }
     return [];
 }
 

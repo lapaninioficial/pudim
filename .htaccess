@@ -1,4 +1,4 @@
-# La Panini — raiz (HostGator Plano M, Apache + cPanel)
+# Pudim Lapanini — raiz (HostGator Plano M, Apache + cPanel)
 # MIME + cache longo para estáticos (CSS/JS usam ?v= cache-busting).
 Options -Indexes
 
@@ -18,6 +18,29 @@ Options -Indexes
   RewriteCond %{HTTP_HOST} ^www\.lapanini\.com\.br$ [NC]
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# URLs antigas (cardápio anterior, caso indexadas): caem na home.
+<IfModule mod_alias.c>
+  RedirectMatch 301 (?i)^/lasanha.* /
+</IfModule>
+
+# Compressão de texto (ganho direto no 4G).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Nunca expor segredos, dumps ou controle de versão.
+<IfModule mod_authz_core.c>
+  <FilesMatch "(\.(sql|env|log)|^\.git)">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "(\.(sql|env|log)|^\.git)">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_mime.c>

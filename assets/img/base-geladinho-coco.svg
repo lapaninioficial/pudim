@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="pudGlow" cx="0.5" cy="0.38" r="0.65">
+      <stop offset="0" stop-color="#D4A574" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0D0B0A"/>
+  <rect width="800" height="800" fill="url(#pudGlow)"/>
+  <ellipse cx="400" cy="660" rx="496" ry="56" fill="#000000" opacity="0.55"/><path d="M330 200 L470 200 L455 240 L345 240 Z" fill="#3A2A1A" stroke="#8B5A2B" stroke-width="4"/><rect x="330" y="240" width="140" height="330" rx="26" fill="#FFFFFF" stroke="#8B5A2B" stroke-width="5"/><rect x="352" y="240" width="34" height="330" rx="17" fill="#A8C256" opacity="0.85"/><rect x="410" y="262" width="16" height="286" rx="8" fill="#FFFFFF" opacity="0.35"/><path d="M330 570 L470 570 L455 612 L345 612 Z" fill="#3A2A1A" stroke="#8B5A2B" stroke-width="4"/>
+</svg>

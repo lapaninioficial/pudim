@@ -6,9 +6,10 @@
    Prioridade: JPG/WebP → SVG mapeado → SVG fallback → placeholder artesanal.
    ===================================================================== */
 
-/* Mapeamento: product ID → nome do arquivo SVG (sem extensão).
-   Só entram aqui produtos COM foto própria; todo o resto usa a imagem
-   genérica (produto-generico.svg). */
+/* Mapeamento: product ID → nome do arquivo de imagem (sem extensão).
+   Todos os 40 produtos do cardápio têm entrada aqui: foto própria ou
+   a foto mais próxima (kits e geladinhos usam os placeholders gerados
+   em assets/img/<slug>.svg até chegarem as fotos reais). */
 var IMAGE_MAP = {
   'pudim-tradicional':     'pudim-tradicional-da-casa-100g',
   'pudim-tradicional-380g': 'pudim-tradicional-da-casa-380g',
@@ -22,21 +23,48 @@ var IMAGE_MAP = {
   'coca-cola-350':         'coca-cola-350',
   'guarana-350':           'guarana-350',
   'suco-laranja':          'suco-laranja',
-  'agua-mineral':          'agua-mineral'
+  'agua-mineral':          'agua-mineral',
+  /* Placeholders gerados (assets/img/<slug>.svg) — trocar por foto real. */
+  'kit-mini-festa':        'kit-mini-festa',
+  'kit-mini-reuniao':      'kit-mini-reuniao',
+  'kit-mini-caseiro':      'kit-mini-caseiro',
+  'kit-mini-aniversario':  'kit-mini-aniversario',
+  'kit-mini-cafe-tarde':   'kit-mini-cafe-tarde',
+  'kit-festa-doce-10un':   'kit-festa-doce-10un',
+  'kit-casamento-mini':    'kit-casamento-mini',
+  'kit-aniversario-kids':  'kit-aniversario-kids',
+  'kit-escritorio':        'kit-escritorio',
+  'kit-degustacao':        'kit-degustacao',
+  'pudim-pacoca-130g':     'pudim-pacoca-130g',
+  'pudim-limao-130g':      'pudim-limao-130g',
+  'suco-maracuja':         'suco-maracuja',
+  'base-geladinho-leite-moca': 'base-geladinho-leite-moca',
+  'base-geladinho-coco':   'base-geladinho-coco',
+  /* Sem foto própria: usam a foto do produto mais próximo. */
+  'pudim-leite-moca-familia':    'pudim-tradicional-da-casa-380g',
+  'pudim-leite-moca-individual': 'pudim-tradicional-da-casa-100g',
+  'pudim-leite-moca-medio-550g': 'pudim-tradicional-da-casa-380g',
+  'pudim-geladinho-gourmet':     'base-geladinho-leite-moca',
+  'pudim-laka-granule':          'pudim-de-doce-de-leite-130g',
+  'pudim-combo-tradicional-geladinho': 'kit-mini-festa',
+  'pudim-combo-5-geladinhos':    'base-geladinho-leite-moca',
+  'pudim-kit-caixa-4':           'kit-mini-caseiro',
+  'pudim-premium-tradicional-individual': 'pudim-tradicional-da-casa-100g',
+  'pudim-premium-doce-leite-individual':  'pudim-de-doce-de-leite-130g',
+  'pudim-premium-brigadeiro-individual':  'pudim-de-doce-de-leite-130g',
+  'pudim-premium-cheesecake-individual':  'pudim-de-coco-130g'
 };
 
 /* Imagem genérica (SVG) para produtos sem foto própria. */
 var GENERIC_IMAGE = 'produto-generico';
 
-/* Todas as fotos apontam para a imagem genérica (pedido do dono).
-   O IMAGE_MAP acima fica guardado: para reativar as fotos próprias,
-   volte esta função para `return IMAGE_MAP[id] || GENERIC_IMAGE;`. */
+/* Fotos próprias ativadas: usa o IMAGE_MAP acima; sem foto, cai na genérica. */
 function resolveImageFile(id) {
-  return GENERIC_IMAGE;
+  return IMAGE_MAP[id] || GENERIC_IMAGE;
 }
 
 /* Manifesto dos arquivos reais em assets/img (prioridade: jpg > webp > svg).
-   Evita 404 em massa: só requisita o que existe; sem arquivo, vai direto
+   Evita vários 404: só requisita o que existe; sem arquivo, vai direto
    ao placeholder gerado (zero requisição). Ao adicionar fotos, atualize aqui. */
 var IMAGE_FILES = {
   'agua-mineral': 'webp',
@@ -53,12 +81,26 @@ var IMAGE_FILES = {
   'pudim-de-doce-de-leite-130g': 'svg',
   'pudim-tradicional-da-casa-100g': 'svg',
   'pudim-tradicional-da-casa-380g': 'svg',
-  'selecao-compartilhada-1kg': 'svg',
   'suco-laranja': 'webp',
-  'torta-alfajor-na-fatia': 'svg',
+  'torta-alfajor-na-fatia': 'webp',
   'torta-chaja': 'svg',
   'torta-de-chocolate-belga': 'svg',
-  'torta-de-sorvete-alfajor': 'svg'
+  'torta-de-sorvete-alfajor': 'svg',
+  'kit-mini-festa': 'svg',
+  'kit-mini-reuniao': 'svg',
+  'kit-mini-caseiro': 'svg',
+  'kit-mini-aniversario': 'svg',
+  'kit-mini-cafe-tarde': 'svg',
+  'kit-festa-doce-10un': 'svg',
+  'kit-casamento-mini': 'svg',
+  'kit-aniversario-kids': 'svg',
+  'kit-escritorio': 'svg',
+  'kit-degustacao': 'svg',
+  'pudim-pacoca-130g': 'svg',
+  'pudim-limao-130g': 'svg',
+  'suco-maracuja': 'svg',
+  'base-geladinho-leite-moca': 'svg',
+  'base-geladinho-coco': 'svg'
 };
 
 function getImageUrl(id) {
@@ -89,32 +131,11 @@ function paletteFor(id) {
   if (id.indexOf('pudim') === 0) {
     return { back: ['#201914', '#110D0A'], lay1: '#B86A1F', lay2: '#F4DFA6', accent: '#7A451A', steam: false, sweet: true };
   }
-  if (cat === 'sobremesas' || id === 'romeu-julieta' || id === 'california') {
+  if (cat === 'sobremesas') {
     return { back: ['#1C1410', '#100B08'], lay1: '#8A5226', lay2: '#F3D9A2', accent: '#FF7B31', steam: false, sweet: true };
   }
-  if (id.indexOf('camarao') === 0) {
-    return { back: ['#1D1512', '#100C0A'], lay1: '#C2471B', lay2: '#F3DFA0', accent: '#FF9A76', steam: true, sweet: false };
-  }
-  if (id.indexOf('bacalhau') === 0) {
-    return { back: ['#1B1512', '#0F0C09'], lay1: '#BFB39A', lay2: '#F6ECD6', accent: '#E0B460', steam: true, sweet: false };
-  }
-  if (id.indexOf('brocolis') === 0) {
-    return { back: ['#181A12', '#0E100B'], lay1: '#4E7A2A', lay2: '#E9DDA6', accent: '#6FA84A', steam: true, sweet: false };
-  }
-  if (id.indexOf('cogumelos') === 0) {
-    return { back: ['#1E1612', '#100C09'], lay1: '#8A5A33', lay2: '#EAD6AC', accent: '#C9905A', steam: true, sweet: false };
-  }
-  if (id.indexOf('gorgonzola') === 0 || id.indexOf('queijos') === 0 || id === 'file-mignon') {
-    return { back: ['#201812', '#110D0A'], lay1: '#B4691E', lay2: '#F4E3BC', accent: '#FF7B31', steam: true, sweet: false };
-  }
-  if (id.indexOf('abobrinha') === 0) {
-    return { back: ['#141914', '#0D100C'], lay1: '#5C7A3A', lay2: '#DDE0B8', accent: '#7FA85C', steam: true, sweet: false };
-  }
-  if (id.indexOf('selecao') === 0 || id.indexOf('mesa') === 0 || id.indexOf('experiencia') === 0 || id.indexOf('curadoria') === 0) {
+  if (id.indexOf('kit-') === 0) {
     return { back: ['#1C1510', '#0F0B08'], lay1: '#C2471B', lay2: '#F3DFA0', accent: '#F26B21', steam: false, sweet: false };
-  }
-  if (id.indexOf('branca') > -1 || id.indexOf('cream') > -1) {
-    return { back: ['#1D1712', '#110C08'], lay1: '#B4691E', lay2: '#F4E5C4', accent: '#FF7B31', steam: true, sweet: false };
   }
   return { back: ['#1E1611', '#100B08'], lay1: '#C2471B', lay2: '#F3DFA0', accent: '#FF7B31', steam: true, sweet: false };
 }
@@ -210,7 +231,7 @@ window.LAPANINI_PLACEHOLDER = function (id, w, h) { return placeholderSrc(id, w,
 function imgFallback(el) {
   if (el && el.dataset && !el.dataset.fb) {
     el.dataset.fb = '1';
-    var pid = el.dataset.pid || 'bolonhesa-branca';
+    var pid = el.dataset.pid || 'pudim-tradicional';
     el.src = window.LAPANINI_PLACEHOLDER(pid);
   }
 }
@@ -218,7 +239,7 @@ function imgFallback(el) {
 function imgWebpFallback(el) {
   if (el && el.dataset && !el.dataset.fb) {
     el.dataset.fb = '1';
-    var pid = el.dataset.pid || 'bolonhesa-branca';
+    var pid = el.dataset.pid || 'pudim-tradicional';
     el.onerror = function () {
       el.onerror = null;
       el.dataset.fb = '2';
@@ -236,7 +257,7 @@ function imgWebpFallback(el) {
 function heroFallback(el) {
   if (el && el.dataset && !el.dataset.fb) {
     el.dataset.fb = '1';
-    el.src = window.LAPANINI_PLACEHOLDER('mesa-farta', 900, 720);
+    el.src = window.LAPANINI_PLACEHOLDER('pudim-tradicional', 900, 720);
   }
 }
 

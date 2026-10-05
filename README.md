@@ -45,10 +45,12 @@ pudim/
     (Romeu e Julieta/Califórnia → Sobremesas), `sql/22-2fa-totp.sql` (2FA),
      `sql/23-lgpd.sql` (consentimentos LGPD) e `sql/24-kits-mini.sql`
      (renomeia `doces` para Kits Mini em bases antigas) e por fim
-     `sql/26-pudins-financeiro.sql` (financeiro Pudim LAPANINI: Massa Fresca →
-     Caldas, Molhos Caseiros → Geladinhos, fichas de pudim, remove os
-     insumos e fichas das lasanhas) e `sql/27-tudo-que-vende.sql`
-     (fichas de combos, kits mini, seleções fechadas e bebidas em revenda).
+     `sql/26-pudins-financeiro.sql` (fichas de pudim) e `sql/27-tudo-que-vende.sql`
+     (fichas de combos e kits) e por fim **`sql/28-pudim-exclusivo.sql`**
+     (conversão final: remove todas as categorias/produtos legados,
+     cria `eventos` + Kits Mini/Eventos + Geladinhos + sobremesas/bebida
+     novas, limpa adicionais salgados e a taxa de preparo) e
+     `sql/29-acentos-utf8.sql` (acentuação correta nos produtos novos).
     Os dumps `lapanini.sql`/`lapanini-hostgator.sql` são o snapshot base —
     os incrementais acima são obrigatórios numa instalação nova.
    Para o financeiro: `sql/migration_financial_safe.sql`,
@@ -59,12 +61,14 @@ pudim/
    1. `sql/15-ingredient-categories.sql` — coluna `category` nos insumos
       (se já existir: erro 1060 — ignore o ALTER, rode só os UPDATEs);
    2. `sql/16-ficha-tecnica-full.sql` — cria `fichas_tecnicas` + `ficha_insumos`;
-   3. `sql/17-massas-molhos-casa.sql` — categorias/produtos de Massa Fresca e
-      Molhos Caseiros (internos, fora da vitrine);
+    3. `sql/17-massas-molhos-casa.sql` — LEGADO (categorias internas removidas
+       pela `28`; não importar em instalações novas);
    4. `sql/19-ficha-multi-categoria.sql` — campos por tipo (tempo_gratinado,
       modo_de_uso, volume_ml, rendimento_em_l);
-   5. `sql/20-fichas-massa-molhos.sql` — fichas completas de massa/molhos.
-   Opcional: `sql/18-venda-avulsa.sql` (ativa os 3 na vitrine; após o 17).
+    5. `sql/20-fichas-massa-molhos.sql` — LEGADO (fichas removidas pela `28`).
+    Opcional: `sql/18-venda-avulsa.sql` — LEGADO (não importar; itens removidos pela `28`).
+    **Instalação nova recomendada:** importe `deploy/pudim-lapanini-limpo.sql`
+    (dump final já com as 8 categorias e 40 produtos) em vez dos incrementais.
 2. **Conexão:** edite `app/config.php` com o usuário/senha/banco da HostGator
    (host normalmente `localhost`, charset `utf8mb4`).
 3. **Envie os arquivos:** copie a estrutura raiz para `public_html/`.
@@ -127,9 +131,9 @@ Exemplo de `POST api/orders`:
   "payment": { "method": "pix" },
   "coupon": "PUDIMHASS10",
   "items": [
-    { "productId": "file-mignon", "sizeId": "g1000", "qty": 1, "addons": ["queso-extra"] },
-    { "productId": "mesa-farta", "qty": 1 },
-    { "productId": "selecao-generosa", "picks": { "bolonhesa-branca": 2, "frango-vermelha": 2 } }
+    { "productId": "pudim-tradicional", "sizeId": "u", "qty": 2, "addons": ["chantilly"] },
+    { "productId": "kit-mini-festa", "qty": 1 },
+    { "productId": "coca-cola-350", "sizeId": "u", "qty": 2 }
   ]
 }
 ```

@@ -44,48 +44,32 @@ var COUPONS = [
   { code: 'PUDIMHASS10', type: 'percent', value: 10, label: '10% OFF' }
 ];
 
-/* ---------- Categorias (oficiais da marca) ---------- */
+/* ---------- Categorias (loja exclusiva de pudins — 8 seções, nesta ordem) ---------- */
 
 var CATEGORIES = [
-  { id: 'pudins',                   name: 'Pudins Artesanais',             short: 'Pudins',               kicker: 'Cremosos, gelados e feitos todos os dias' },
-  { id: 'selecoes-fechadas',       name: 'Seleções Especiais Fechadas', short: 'Seleções Fechadas',     kicker: 'Combinações pensadas para servir com equilíbrio e praticidade' },
-  { id: 'selecoes-personalizadas', name: 'Seleções Personalizadas',     short: 'Personalizadas',       kicker: 'Monte sua seleção escolhendo os sabores que preferir.' },
-  { id: 'classicos',               name: 'Pudins Sabores Clássicos',   short: 'Clássicos',            kicker: 'Nossos sabores clássicos, feitos todos os dias' },
-  { id: 'deluxe',                  name: 'Pudins Sabores Deluxe',      short: 'Deluxe',               kicker: 'Pudins para servir com equilíbrio e praticidade' },
-  { id: 'especiais',               name: 'Pudins Sabores Especiais',   short: 'Especiais',            kicker: 'Nossos sabores especiais' },
-  { id: 'lowcarb',                 name: 'Pudins Low Carb',            short: 'Low Carb',             kicker: 'Nossos sabores low carb' },
-  { id: 'frutosdormar',            name: 'Frutos do Mar',               short: 'Frutos do Mar',        kicker: 'Pudins de frutos do mar' },
-  { id: 'doces',                   name: 'Kits Mini',                short: 'Kits Mini',              kicker: 'Pudins individuais para eventos — calcule pela quantidade de convidados' },
+  { id: 'doces',                   name: 'Kits Mini',                short: 'Kits Mini',              kicker: 'Mini pudins e sobremesas para festas e eventos' },
+  { id: 'eventos',                 name: 'Eventos',                  short: 'Eventos',                kicker: 'Kits de pudins e sobremesas para festas e empresas' },
   { id: 'sobremesas',              name: 'Sobremesas Variadas',         short: 'Sobremesas',           kicker: 'Para adoçar depois da mesa' },
+  { id: 'bebidas',                 name: 'Escolha sua bebida',          short: 'Bebidas',              kicker: 'Bebidas para acompanhar seu pudim' },
+  { id: 'geladinhos',              name: 'Geladinhos',               short: 'Geladinhos',             kicker: 'Geladinhos gourmet feitos na casa' },
   { id: 'mais-pedidos',            name: 'Os Mais Pedidos',             short: 'Mais Pedidos',         kicker: 'Os queridinhos da casa' },
   { id: 'promocao-do-dia',         name: 'Promoção do Dia!',            short: 'Promoção',             kicker: 'Ofertas por tempo limitado' },
-  { id: 'top-mais-vendidos',       name: 'Top Mais Vendidos!',          short: 'Top Vendidos',         kicker: 'Os campeões de venda' },
-  { id: 'massa-fresca',             name: 'Massa Fresca da Casa',        short: 'Massa Fresca',         kicker: 'Massa fresca artesanal, feita na casa' },
-  { id: 'molhos-caseiros',          name: 'Molhos Caseiros',             short: 'Molhos',               kicker: 'Molhos artesanais feitos na casa, por litro' },
-  { id: 'bebidas',                 name: 'Escolha sua bebida',          short: 'Bebidas',              kicker: 'Bebidas para acompanhar seu pudim' }
+  { id: 'top-mais-vendidos',       name: 'Top Mais Vendidos!',          short: 'Top Vendidos',         kicker: 'Os campeões de venda' }
 ];
 
 /* ---------- Adicionais (versão funcional terá config: mínimo/máximo e seleção única ou múltipla) ---------- */
 
-/* Grupos de adicionais exibidos no cardápio (mesmo vocabulário do admin e do banco). */
+/* Grupos de adicionais exibidos no cardápio (loja de pudins: só doces). */
 var ADDON_GROUPS = [
-  { id: 'borda',   label: 'Borda' },
-  { id: 'molho',   label: 'Molhos' },
-  { id: 'extra',   label: 'Extras' },
-  { id: 'retirar', label: 'Retirar' }
+  { id: 'doce',   label: 'Doces' }
 ];
 
 /* Lista única de adicionais de TODO o cardápio (mesmos ids do admin e do banco). */
 var ADDONS_LIST = [
-  { id: 'borda-queijo',        label: 'Borda de Queijo Extra',  grp: 'borda',   price: 12.90 },
-  { id: 'molho-especial',      label: 'Molho Especial da Casa', grp: 'molho',   price: 6.90 },
-  { id: 'molho-branco-extra',  label: 'Molho Branco Extra',     grp: 'molho',   price: 5.90 },
-  { id: 'bacon',               label: 'Bacon Crocante',         grp: 'extra',   price: 7.90 },
-  { id: 'cheddar',             label: 'Cheddar Derretido',      grp: 'extra',   price: 6.90 },
-  { id: 'cebola-caramelizada', label: 'Cebola Caramelizada',    grp: 'extra',   price: 5.90 },
-  { id: 'ovo',                 label: 'Ovo Frito',              grp: 'extra',   price: 3.90 },
-  { id: 'palmito',             label: 'Palmito',                grp: 'extra',   price: 6.90 },
-  { id: 'sem-cebola',          label: 'Retirar Cebola',         grp: 'retirar', price: 0 }
+  { id: 'doce-leite',        label: 'Doce de leite extra', grp: 'doce',   price: 3.90 },
+  { id: 'chantilly',         label: 'Chantilly',           grp: 'doce',   price: 4.90 },
+  { id: 'morango',           label: 'Morango fresco',      grp: 'doce',   price: 4.50 },
+  { id: 'coco',              label: 'Coco raspado',        grp: 'doce',   price: 3.50 }
 ];
 
 function addonsOf(product) {
@@ -120,15 +104,8 @@ function addonGroupsOf(product, list) {
 
 /* ---------- Tamanhos ---------- */
 
-var SIZE_SAVORY = [
-  { id: 'g500',  label: '500g · 3 porções',  factor: 1 },
-  { id: 'g1000', label: '1kg · 5 porções',   factor: 1.6 },
-  { id: 'g1500', label: '1,5kg · 8 porções', factor: 2.1 }
-];
-
 var SIZE_KIT = [{ id: 'kit', label: 'Kit fechado', factor: 1 }];
 var SIZE_UNIT = [{ id: 'u', label: 'Unidade', factor: 1 }];
-var SIZE_DRINK = [{ id: 'u', label: 'Unidade', factor: 1 }];
 
 /* ---------- Cálculos (funções puras: sem DOM, sem storage) ---------- */
 
@@ -170,7 +147,7 @@ var PRICING = {
     var n = Math.max(num(count, 0), num(sel && sel.min, 1));
     return round2(PRICING.selectionUnit(sel) * n);
   },
-  /* Preço cheio da unidade de 1,5kg de um sabor (cadastro PRICE_1500). */
+  /* Preço cheio da unidade de um sabor (primeiro tamanho cadastrado). */
   selectionFlavorFull: function (flavor) {
     if (!flavor || !flavor.sizes) { return 0; }
     var s = flavor.sizes.filter(function (x) { return x.id === 'g1500'; })[0] || flavor.sizes[0];

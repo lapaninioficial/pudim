@@ -15,8 +15,8 @@ function api_admin_addons_register(Router $r): void
         $id = slugify((string)pick($d, 'id', pick($d, 'label', '')));
         $label = trim((string)pick($d, 'label', ''));
         if (mb_strlen($label) < 2) { err('Informe o nome do adicional.', 400); }
-        $grp = (string)pick($d, 'grp', 'salgado');
-        if (!in_array($grp, ['salgado', 'doce', 'borda', 'molho', 'extra', 'retirar'], true)) { err('Grupo inválido.', 400); }
+        $grp = (string)pick($d, 'grp', 'doce');
+        if ($grp !== 'doce') { err('Grupo inválido.', 400); }
         $price = (float)pick($d, 'price', 0);
         if ($price < 0) { err('Preço inválido.', 400); }
         $exists = db()->prepare('SELECT COUNT(*) FROM addons WHERE id = ?');
@@ -37,6 +37,7 @@ function api_admin_addons_register(Router $r): void
         $label = trim((string)pick($d, 'label', $cur['label']));
         if (mb_strlen($label) < 2) { err('Informe o nome do adicional.', 400); }
         $grp = (string)pick($d, 'grp', $cur['grp']);
+        if ($grp !== 'doce') { err('Grupo inválido.', 400); }
         $st = db()->prepare('UPDATE addons SET grp=?, label=?, price=?, required=?, position=?, active=? WHERE id=?');
         $st->execute([
             $grp, $label,

@@ -50,7 +50,8 @@ pudim/
      (conversão final: remove todas as categorias/produtos legados,
      cria `eventos` + Kits Mini/Eventos + Geladinhos + sobremesas/bebida
      novas, limpa adicionais salgados e a taxa de preparo) e
-     `sql/29-acentos-utf8.sql` (acentuação correta nos produtos novos).
+     `sql/29-acentos-utf8.sql` (acentuação correta nos produtos novos) e
+     `sql/30-menu-ordem.sql` (ordem 1→8 da barra de menu/seções).
     Os dumps `lapanini.sql`/`lapanini-hostgator.sql` são o snapshot base —
     os incrementais acima são obrigatórios numa instalação nova.
    Para o financeiro: `sql/migration_financial_safe.sql`,

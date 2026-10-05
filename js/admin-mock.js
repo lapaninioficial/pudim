@@ -15,14 +15,14 @@
   var MOCK_USER = { id: 1, name: 'Administrador', email: 'admin@lapanini.com.br', role: 'admin', active: true };
 
   var MOCK_CATEGORIES = [
-    { id: 'doces', name: 'Kits Mini', short: 'Kits Mini', kicker: 'Mini pudins e sobremesas para festas e eventos', position: 1, active: true },
-    { id: 'eventos', name: 'Eventos', short: 'Eventos', kicker: 'Kits de pudins e sobremesas para festas e empresas', position: 2, active: true },
-    { id: 'sobremesas', name: 'Sobremesas Variadas', short: 'Sobremesas', kicker: 'Para adoçar depois da mesa', position: 3, active: true },
-    { id: 'bebidas', name: 'Escolha sua bebida', short: 'Bebidas', kicker: 'Bebidas para acompanhar seu pudim', position: 4, active: true },
-    { id: 'geladinhos', name: 'Geladinhos', short: 'Geladinhos', kicker: 'Geladinhos gourmet feitos na casa', position: 5, active: true },
-    { id: 'mais-pedidos', name: 'Os Mais Pedidos', short: 'Mais Pedidos', kicker: 'Os queridinhos da casa', position: 6, active: true },
-    { id: 'promocao-do-dia', name: 'Promoção do Dia!', short: 'Promoção', kicker: 'Ofertas por tempo limitado', position: 7, active: true },
-    { id: 'top-mais-vendidos', name: 'Top Mais Vendidos!', short: 'Top Vendidos', kicker: 'Os campeões de venda', position: 8, active: true }
+    { id: 'mais-pedidos', name: 'Os Mais Pedidos', short: 'Mais Pedidos', kicker: 'Os queridinhos da casa', position: 1, active: true },
+    { id: 'top-mais-vendidos', name: 'Top Mais Vendidos!', short: 'Top Vendidos', kicker: 'Os campeões de venda', position: 2, active: true },
+    { id: 'promocao-do-dia', name: 'Promoção do Dia!', short: 'Promoção', kicker: 'Ofertas por tempo limitado', position: 3, active: true },
+    { id: 'geladinhos', name: 'Geladinhos', short: 'Geladinhos', kicker: 'Geladinhos gourmet feitos na casa', position: 4, active: true },
+    { id: 'sobremesas', name: 'Sobremesas Variadas', short: 'Sobremesas', kicker: 'Para adoçar depois da mesa', position: 5, active: true },
+    { id: 'doces', name: 'Kits Mini', short: 'Kits Mini', kicker: 'Mini pudins e sobremesas para festas e eventos', position: 6, active: true },
+    { id: 'eventos', name: 'Eventos', short: 'Eventos', kicker: 'Kits de pudins e sobremesas para festas e empresas', position: 7, active: true },
+    { id: 'bebidas', name: 'Escolha sua bebida', short: 'Bebidas', kicker: 'Bebidas para acompanhar seu pudim', position: 8, active: true }
   ];
 
   var MOCK_PRODUCTS = [

@@ -1255,8 +1255,8 @@ function productImage(p, index) {
 var S_PUDINS = { q: '', size: '', active: '', cat: '' };
 var PUDINS_DATA = [];
 var PUDIM_CATS = [];
-var PUDIM_CAT_ORDER = ['doces', 'eventos', 'sobremesas', 'bebidas',
-  'geladinhos', 'mais-pedidos', 'promocao-do-dia', 'top-mais-vendidos'];
+var PUDIM_CAT_ORDER = ['mais-pedidos', 'top-mais-vendidos', 'promocao-do-dia',
+  'geladinhos', 'sobremesas', 'doces', 'eventos', 'bebidas'];
 
   /* Tarefa B — normaliza produto da API (GET /admin/products) para o card da tela Pudins. */
 function pudimActive(v) {

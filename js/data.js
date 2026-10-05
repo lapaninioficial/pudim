@@ -44,17 +44,18 @@ var COUPONS = [
   { code: 'PUDIMHASS10', type: 'percent', value: 10, label: '10% OFF' }
 ];
 
-/* ---------- Categorias (loja exclusiva de pudins — 8 seções, nesta ordem) ---------- */
+/* ---------- Categorias (loja exclusiva de pudins — 8 seções) ----------
+   Ordem = ordem da barra de menu e das seções na vitrine (1→8). */
 
 var CATEGORIES = [
+  { id: 'mais-pedidos',            name: 'Os Mais Pedidos',             short: 'Mais Pedidos',         kicker: 'Os queridinhos da casa' },
+  { id: 'top-mais-vendidos',       name: 'Top Mais Vendidos!',          short: 'Top Vendidos',         kicker: 'Os campeões de venda' },
+  { id: 'promocao-do-dia',         name: 'Promoção do Dia!',            short: 'Promoção',             kicker: 'Ofertas por tempo limitado' },
+  { id: 'geladinhos',              name: 'Geladinhos',               short: 'Geladinhos',             kicker: 'Geladinhos gourmet feitos na casa' },
+  { id: 'sobremesas',              name: 'Sobremesas Variadas',         short: 'Sobremesas',           kicker: 'Para adoçar depois da mesa' },
   { id: 'doces',                   name: 'Kits Mini',                short: 'Kits Mini',              kicker: 'Mini pudins e sobremesas para festas e eventos' },
   { id: 'eventos',                 name: 'Eventos',                  short: 'Eventos',                kicker: 'Kits de pudins e sobremesas para festas e empresas' },
-  { id: 'sobremesas',              name: 'Sobremesas Variadas',         short: 'Sobremesas',           kicker: 'Para adoçar depois da mesa' },
-  { id: 'bebidas',                 name: 'Escolha sua bebida',          short: 'Bebidas',              kicker: 'Bebidas para acompanhar seu pudim' },
-  { id: 'geladinhos',              name: 'Geladinhos',               short: 'Geladinhos',             kicker: 'Geladinhos gourmet feitos na casa' },
-  { id: 'mais-pedidos',            name: 'Os Mais Pedidos',             short: 'Mais Pedidos',         kicker: 'Os queridinhos da casa' },
-  { id: 'promocao-do-dia',         name: 'Promoção do Dia!',            short: 'Promoção',             kicker: 'Ofertas por tempo limitado' },
-  { id: 'top-mais-vendidos',       name: 'Top Mais Vendidos!',          short: 'Top Vendidos',         kicker: 'Os campeões de venda' }
+  { id: 'bebidas',                 name: 'Escolha sua bebida',          short: 'Bebidas',              kicker: 'Bebidas para acompanhar seu pudim' }
 ];
 
 /* ---------- Adicionais (versão funcional terá config: mínimo/máximo e seleção única ou múltipla) ---------- */
